@@ -52,9 +52,7 @@ variable "db_disk_allocation" {
   default = 61440
 }
 
-variable "db_whitelist_ip_address" {
-  default = "0.0.0.0/0"
-}
+variable "db_whitelist_ip_address" {}
 
 variable "es_kafka_service_name" {
   default = "event-service-kafka"
@@ -88,33 +86,29 @@ variable "es_kafka_topic_segment_bytes" {
   default = 536870912
 }
 
-variable "vpn_gateway_name" {
-  default = "sample-vpn-gateway"
-}
-
-variable "vpn_connection_name" {
-  default = "sample-vpn-connection"
-}
-
 variable "vpn_connection_pre_shared_key" {
-  default = "vpmdemo123"
+  type    = list(string)
+  default = ["vpmdemo123"]
 }
 
 variable "vpn_connection_interval" {
-  default = 30
+  type    = list(number)
+  default = [30]
 }
 
 variable "vpn_connection_timeout" {
-  default = 120
+  type    = list(number)
+  default = [120]
 }
 
 variable "vpn_connection_admin_state_up" {
-  type    = bool
-  default = true
+  type    = list(bool)
+  default = [true]
 }
 
 variable "vpn_connection_action" {
-  default = "restart"
+  type    = list(string)
+  default = ["restart"]
 }
 
 variable "vpn_peer_cidr" {
@@ -123,7 +117,8 @@ variable "vpn_peer_cidr" {
 }
 
 variable "vpn_peer_public_address" {
-  default = "0.0.0.0/0"
+  type    = list(string)
+  default = ["0.0.0.0/0"]
 }
 
 locals {
