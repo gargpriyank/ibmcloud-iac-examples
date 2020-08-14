@@ -3,7 +3,7 @@
   "type": [
     "terraform_v0.12"
   ],
-  "description": "Sample workspace for Infordata dev environment",
+  "description": "Sample workspace for dev environment",
   "tags": [
     "app:iac-example",
     "owner:iac-example",
