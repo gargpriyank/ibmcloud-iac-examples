@@ -1,0 +1,180 @@
+{
+  "name": "infordata",
+  "type": [
+    "terraform_v0.12"
+  ],
+  "description": "Sample workspace for Infordata dev environment",
+  "tags": [
+    "app:infordata",
+    "owner:infordata",
+    "env:dev"
+  ],
+  "template_repo": {
+    "url": "https://github.com/IBM/cloud-enterprise-examples/tree/master/iac/09-containers"
+  },
+  "template_data": [{
+    "folder": ".",
+    "type": "terraform_v0.12",
+    "variablestore": [{
+        "name": "project_name",
+        "value": "infordata",
+        "type": "string"
+      },
+      {
+        "name": "environment",
+        "value": "dev",
+        "type": "string"
+      },
+      {
+        "name": "resource_group",
+        "value": "infordata-dev-rg",
+        "type": "string"
+      },
+      {
+        "name": "region",
+        "value": "eu-de",
+        "type": "string"
+      },
+      {
+        "name": "vpc_zone_names",
+        "value": "[\"eu-de-1\", \"eu-de-1\"]",
+        "type": "list(string)"
+      },
+      {
+        "name": "flavors",
+        "value": "[\"mx2.4x32\", \"mx2.4x32\"]",
+        "type": "list(string)"
+      },
+      {
+        "name": "workers_count",
+        "value": "[2, 2]",
+        "type": "list(number)"
+      },
+      {
+        "name": "k8s_version",
+        "value": "4.3_openshift",
+        "type": "string"
+      },
+      {
+        "name": "db_name",
+        "value": "infordata-dev-mongodb",
+        "type": "string"
+      },
+      {
+        "name": "db_plan",
+        "value": "standard",
+        "type": "string"
+      },
+      {
+        "name": "db_service_name",
+        "value": "databases-for-mongodb",
+        "type": "string"
+      },
+      {
+        "name": "db_admin_password",
+        "value": "password123",
+        "type": "string"
+      },
+      {
+        "name": "db_memory_allocation",
+        "value": "3072",
+        "type": "number"
+      },
+      {
+        "name": "db_disk_allocation",
+        "value": "61440",
+        "type": "number"
+      },
+      {
+        "name": "db_whitelist_ip_address",
+        "value": "0.0.0.0/0",
+        "type": "string"
+      },
+      {
+        "name": "es_kafka_plan",
+        "value": "standard",
+        "type": "string"
+      },
+      {
+        "name": "es_kafka_service_name",
+        "value": "infordata-kafka",
+        "type": "string"
+      },
+      {
+        "name": "es_kafka_topic_name",
+        "value": "infordata-topic-1",
+        "type": "string"
+      },
+      {
+        "name": "es_kafka_topic_partitions",
+        "value": "1",
+        "type": "number"
+      },
+      {
+        "name": "es_kafka_topic_cleanup_policy",
+        "value": "compact,delete",
+        "type": "string"
+      },
+      {
+        "name": "es_kafka_topic_retention_ms",
+        "value": "86400000",
+        "type": "number"
+      },
+      {
+        "name": "es_kafka_topic_retention_bytes",
+        "value": "1073741824",
+        "type": "number"
+      },
+      {
+        "name": "es_kafka_topic_segment_bytes",
+        "value": "536870912",
+        "type": "number"
+      },
+      {
+        "name": "vpn_gateway_name",
+        "value": "infordata-dev-vpn-gateway",
+        "type": "string"
+      },
+      {
+        "name": "vpn_connection_name",
+        "value": "infordata-dev-vpn-connection",
+        "type": "string"
+      },
+      {
+        "name": "vpn_connection_pre_shared_key",
+        "value": "vpndemo123",
+        "type": "string"
+      },
+      {
+        "name": "vpn_connection_interval",
+        "value": "30",
+        "type": "number"
+      },
+      {
+        "name": "vpn_connection_timeout",
+        "value": "120",
+        "type": "number"
+      },
+      {
+        "name": "vpn_connection_admin_state_up",
+        "value": "true",
+        "type": "bool"
+      },
+      {
+        "name": "vpn_connection_action",
+        "value": "restart",
+        "type": "string"
+      },
+      {
+        "name": "vpn_peer_cidr",
+        "value": "[\"192.168.0.0/24\", \"192.168.0.0/24\"]",
+        "type": "list(string)"
+      },
+      {
+        "name": "vpn_peer_public_address",
+        "value": "52.116.137.73",
+        "type": "string"
+      }
+    ]
+  }]
+}
