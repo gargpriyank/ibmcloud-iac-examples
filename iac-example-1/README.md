@@ -87,11 +87,11 @@ ibmcloud schematics workspace list
 ibmcloud schematics workspace new --file workspace-dev.json #Create dev environment workspace.
 ibmcloud schematics workspace list          # Identify the WORKSPACE_ID
 
-#  
+# Create plan: 
 ibmcloud schematics plan --id $WORKSPACE_ID  # Identify the Activity_ID
 ibmcloud schematics logs --id $WORKSPACE_ID --act-id Activity_ID
 
-# Apply:
+# Apply plan:
 ibmcloud schematics apply --id $WORKSPACE_ID # Identify the Activity_ID
 ibmcloud schematics logs  --id $WORKSPACE_ID --act-id Activity_ID
 ```
