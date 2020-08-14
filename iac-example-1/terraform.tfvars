@@ -1,6 +1,6 @@
 project_name                   = "iac-example"
 environment                    = "dev"
-resource_group                 = "priyank-rg"
+resource_group                 = "iac-example-rg"
 region                         = "eu-de"
 vpc_zone_names                 = ["eu-de-1"]
 flavors                        = ["mx2.4x32"]
