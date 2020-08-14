@@ -37,7 +37,7 @@
       },
       {
         "name": "vpc_zone_names",
-        "value": "[\"eu-de-1\", \"eu-de-1\"]",
+        "value": "[\"eu-de-1\", \"eu-de-2\"]",
         "type": "list(string)"
       },
       {
