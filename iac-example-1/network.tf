@@ -35,18 +35,6 @@ resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_k8s" {
   }
 }
 
-resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_udp_k8s" {
-  count      = local.max_size
-  group      = ibm_is_vpc.iac_iks_vpc.default_security_group
-  direction  = "inbound"
-  remote     = ibm_is_subnet.iac_iks_subnet[count.index].ipv4_cidr_block
-
-  udp {
-    port_min = 30000
-    port_max = 32767
-  }
-}
-
 resource "ibm_is_public_gateway" "iac_iks_gateway" {
     name           = "${var.project_name}-${var.environment}-gateway-${format("%02s", count.index)}"
     vpc            = ibm_is_vpc.iac_iks_vpc.id
