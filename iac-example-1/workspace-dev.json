@@ -131,39 +131,29 @@
         "type": "number"
       },
       {
-        "name": "vpn_gateway_name",
-        "value": "iac-example-dev-vpn-gateway",
-        "type": "string"
-      },
-      {
-        "name": "vpn_connection_name",
-        "value": "iac-example-dev-vpn-connection",
-        "type": "string"
-      },
-      {
         "name": "vpn_connection_pre_shared_key",
-        "value": "vpndemo123",
-        "type": "string"
+        "value": "[\"vpndemo123\", \"vpndemo345\"]",
+        "type": "list(string)"
       },
       {
         "name": "vpn_connection_interval",
-        "value": "30",
-        "type": "number"
+        "value": "[30, 30]",
+        "type": "list(number)"
       },
       {
         "name": "vpn_connection_timeout",
-        "value": "120",
-        "type": "number"
+        "value": "[120, 120]",
+        "type": "list(number)"
       },
       {
         "name": "vpn_connection_admin_state_up",
-        "value": "true",
-        "type": "bool"
+        "value": "[\"true\", \"true\"]",
+        "type": "list(bool)"
       },
       {
         "name": "vpn_connection_action",
-        "value": "restart",
-        "type": "string"
+        "value": "[\"restart\", \"restart\"]",
+        "type": "list(string)"
       },
       {
         "name": "vpn_peer_cidr",
@@ -173,7 +163,7 @@
       {
         "name": "vpn_peer_public_address",
         "value": "52.116.137.73",
-        "type": "string"
+        "type": "list(string)"
       }
     ]
   }]
