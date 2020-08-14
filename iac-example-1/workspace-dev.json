@@ -27,7 +27,7 @@
       },
       {
         "name": "resource_group",
-        "value": "priyank-rg",
+        "value": "iac-example-rg",
         "type": "string"
       },
       {
