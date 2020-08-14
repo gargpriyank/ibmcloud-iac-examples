@@ -1,14 +1,5 @@
 # Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC Gen2
 
-<!--
-
-Check list for every README:
-- Verify the requirement are the same, make sure the required plugins are there
-- Modify the Project Requirements section. It should be different for every project
-- Modify the Project Validation section. It should be different for every project
-
--->
-
 This directory contains terraform code to create a minimum Red Hat OpenShift cluster in a VPC. Note that in order for the OpenShift Web console and the OperatorHub to be operational, the VPC will be configured with a public gateway to allow outbound Internet traffic from the worker nodes.
 
 The internal registry for Red Hat OpenShift managed on IBM Cloud uses object storage for persistence. This code will also create a Cloud Object Storage instance in the resource group used for the OpenShift Cluster.
@@ -32,6 +23,7 @@ Same for every pattern, the requirements are documented in the [Environment Setu
 - [Install IBM Cloud Terraform Provider](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud)
 - [Configure access to IBM Cloud](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud) for Terraform and the IBM Cloud CLI
 - (Optional) Install some utility tools such as: [jq](https://stedolan.github.io/jq/download/) and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- (Optional) Install OpenShift CLI (OC) from OpenShift console by clicking ? button on the top right corner and selecting Command Line Tools option.
 
 > For OpenShift clusters on VPC Gen 2, the IBM Cloud Terraform provider must be version 1.8.0 or later. This example is using Terraform version 0.12.0.
 
@@ -142,10 +134,18 @@ ibmcloud schematics workspace output --id $WORKSPACE_ID --json
 ibmcloud ks cluster config --cluster $(ibmcloud schematics workspace output --id $WORKSPACE_ID --json | jq -r '.[].output_values[].cluster_id.value')
 ```
 
-In both cases, you should see the the same output variables and get kubectl configured to access the cluster. Some `kubectl` commands to verify you have access are:
+Some `kubectl` commands to verify you have access are:
 
 ```bash
 kubectl cluster-info
 kubectl get nodes
 kubectl get pods -A
+```
+
+Some `oc` commands to verify you have access are:
+
+```bash
+oc cluster-info
+oc get nodes
+oc get pods -A
 ```
