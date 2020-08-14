@@ -4,7 +4,6 @@ This directory contains terraform code to create a minimum Red Hat OpenShift clu
 
 - [Infrastructure as Code: Managing Container Registry (ICR) & Kubernetes Services (IKS) Resources](#infrastructure-as-code-managing-container-registry-icr--kubernetes-services-iks-resources)
   - [General Requirements](#general-requirements)
-  - [Project Requirements](#project-requirements)
   - [How to use with Terraform](#how-to-use-with-terraform)
   - [How to use with Schematics](#how-to-use-with-schematics)
   - [Project Validation](#project-validation)
@@ -49,7 +48,7 @@ ibmcloud iam api-key-create TerraformKey -d "API Key for Terraform" --file ~/ibm
 export IC_API_KEY=$(grep '"apikey":' ~/ibm_api_key.json | sed 's/.*: "\(.*\)".*/\1/')
 ```
 
-## Project Execution
+## How to use with Terraform
 
 A sample `terraform.tfvars` file is provided with this example. This file crates resources in Frankfurt region. Feel free to replace the variables value as per your project requirement.
 
