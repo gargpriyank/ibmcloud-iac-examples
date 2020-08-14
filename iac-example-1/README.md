@@ -128,7 +128,7 @@ If the project was executed with **IBM Cloud Schematics**, get the outputs and k
 ibmcloud schematics workspace list          # Identify the WORKSPACE_ID
 ibmcloud schematics workspace output --id $WORKSPACE_ID --json
 
-ibmcloud ks cluster config --cluster $(ibmcloud schematics workspace output --id $WORKSPACE_ID --json | jq -r '.[].output_values[].cluster_id.value')
+ibmcloud ks cluster config --cluster $(ibmcloud schematics output --id $WORKSPACE_ID --json | jq -r '.[].output_values[].cluster_id.value')
 ```
 
 Some `kubectl` commands to verify you have access are:
