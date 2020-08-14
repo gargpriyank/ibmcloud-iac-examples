@@ -16,10 +16,10 @@
     "folder": ".",
     "type": "terraform_v0.12",
     "variablestore": [{
-        "name": "project_name",
-        "value": "iac-example",
-        "type": "string"
-      },
+      "name": "project_name",
+      "value": "iac-example",
+      "type": "string"
+    },
       {
         "name": "environment",
         "value": "dev",
@@ -27,7 +27,7 @@
       },
       {
         "name": "resource_group",
-        "value": "iac-example-dev-rg",
+        "value": "priyank-rg",
         "type": "string"
       },
       {
@@ -67,7 +67,7 @@
       },
       {
         "name": "db_service_name",
-        "value": "iac-example-for-mongodb",
+        "value": "databases-for-mongodb",
         "type": "string"
       },
       {
