@@ -3,7 +3,7 @@
 This directory contains terraform code to create a minimum Red Hat OpenShift cluster in a VPC. Note that in order for the OpenShift Web console and the OperatorHub to be operational, the VPC will be configured with a public gateway to allow outbound Internet traffic from the worker nodes.
 
 - [Infrastructure as Code: Managing Container Registry (ICR) & Kubernetes Services (IKS) Resources](#infrastructure-as-code-managing-container-registry-icr--kubernetes-services-iks-resources)
-  - [General Requirements](#general-requirements1)
+  - [General Requirements](#general-requirements)
   - [How to use with Terraform](#how-to-use-with-terraform)
   - [How to use with Schematics](#how-to-use-with-schematics)
   - [Project Validation](#project-validation)
