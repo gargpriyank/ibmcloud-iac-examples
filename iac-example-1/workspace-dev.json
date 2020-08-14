@@ -1,12 +1,12 @@
 {
-  "name": "infordata",
+  "name": "iac-example",
   "type": [
     "terraform_v0.12"
   ],
   "description": "Sample workspace for Infordata dev environment",
   "tags": [
-    "app:infordata",
-    "owner:infordata",
+    "app:iac-example",
+    "owner:iac-example",
     "env:dev"
   ],
   "template_repo": {
@@ -17,7 +17,7 @@
     "type": "terraform_v0.12",
     "variablestore": [{
         "name": "project_name",
-        "value": "infordata",
+        "value": "iac-example",
         "type": "string"
       },
       {
@@ -27,7 +27,7 @@
       },
       {
         "name": "resource_group",
-        "value": "infordata-dev-rg",
+        "value": "iac-example-dev-rg",
         "type": "string"
       },
       {
@@ -57,7 +57,7 @@
       },
       {
         "name": "db_name",
-        "value": "infordata-dev-mongodb",
+        "value": "iac-example-dev-mongodb",
         "type": "string"
       },
       {
@@ -67,7 +67,7 @@
       },
       {
         "name": "db_service_name",
-        "value": "databases-for-mongodb",
+        "value": "iac-example-for-mongodb",
         "type": "string"
       },
       {
@@ -97,12 +97,12 @@
       },
       {
         "name": "es_kafka_service_name",
-        "value": "infordata-kafka",
+        "value": "iac-example-kafka",
         "type": "string"
       },
       {
         "name": "es_kafka_topic_name",
-        "value": "infordata-topic-1",
+        "value": "iac-example-topic-1",
         "type": "string"
       },
       {
@@ -132,12 +132,12 @@
       },
       {
         "name": "vpn_gateway_name",
-        "value": "infordata-dev-vpn-gateway",
+        "value": "iac-example-dev-vpn-gateway",
         "type": "string"
       },
       {
         "name": "vpn_connection_name",
-        "value": "infordata-dev-vpn-connection",
+        "value": "iac-example-dev-vpn-connection",
         "type": "string"
       },
       {
