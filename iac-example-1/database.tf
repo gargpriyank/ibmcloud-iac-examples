@@ -10,6 +10,6 @@ resource "ibm_database" "iac_app_db_instance" {
   members_disk_allocation_mb   = var.db_disk_allocation
   whitelist {
     address                    = var.db_whitelist_ip_address
-    description                = "Access is allowed to the provided CIDR block only."
+    description                = "Access to this CIDR block only."
   }
 }
