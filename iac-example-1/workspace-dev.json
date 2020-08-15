@@ -147,7 +147,7 @@
       },
       {
         "name": "vpn_connection_admin_state_up",
-        "value": "[\"true\", \"true\"]",
+        "value": "[true, true]",
         "type": "list(bool)"
       },
       {
@@ -162,7 +162,7 @@
       },
       {
         "name": "vpn_peer_public_address",
-        "value": "52.116.137.73",
+        "value": "[\"52.116.137.73\", \"52.116.137.74\"]",
         "type": "list(string)"
       }
     ]
