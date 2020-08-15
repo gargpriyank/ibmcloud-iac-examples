@@ -52,7 +52,9 @@ variable "db_disk_allocation" {
   default = 61440
 }
 
-variable "db_whitelist_ip_address" {}
+variable "db_whitelist_ip_address" {
+  default = "0.0.0.0/0"
+}
 
 variable "es_kafka_service_name" {
   default = "event-service-kafka"
