@@ -87,6 +87,7 @@ A sample `workspace-dev.json` file is provided with this example. This file crea
 #### Note: Please replace the values of the variables as per your project requirement.
 
 ```json
+...
 "template_data": [{
     "folder": ".",
     "type": "terraform_v0.12",
@@ -120,6 +121,7 @@ A sample `workspace-dev.json` file is provided with this example. This file crea
         "value": "[\"mx2.4x32\"]",
         "type": "list(string)"
       },
+...
 ```      
 
 Execute the below Schematics commands:
