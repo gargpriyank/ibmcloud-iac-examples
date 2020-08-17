@@ -80,9 +80,11 @@ terraform destroy
 
 ## How to use with Schematics
 
+Schematics delivers Terraform as a Service. 
+
 A sample `workspace-dev.json` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multizone sample file is available in multizone directory. Please replace the values of the variables as per your project requirement.
 
-Schematics delivers Terraform as a Service. Execute the below commands:
+Execute the below Schematics commands:
 
 ```bash
 # Create workspace:
