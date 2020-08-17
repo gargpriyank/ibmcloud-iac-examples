@@ -54,16 +54,16 @@ export IC_API_KEY=$(grep '"apikey":' ~/ibm_api_key.json | sed 's/.*: "\(.*\)".*/
 A sample `terraform.tfvars` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multizone sample file is available in multizone directory. 
 #### Note: Please replace the values of the variables as per your project requirement.
 
-   ```hcl-terraform
-   project_name                   = "iac-example"
-   environment                    = "dev"
-   resource_group                 = "iac-example-dev-rg"
-   region                         = "eu-de"
-   vpc_zone_names                 = ["eu-de-1"]
-   flavors                        = ["mx2.4x32"]
-   workers_count                  = [2]
-   ...
-   ```
+```hcl-terraform
+project_name                   = "iac-example"
+environment                    = "dev"
+resource_group                 = "iac-example-dev-rg"
+region                         = "eu-de"
+vpc_zone_names                 = ["eu-de-1"]
+flavors                        = ["mx2.4x32"]
+workers_count                  = [2]
+...
+```
 
 Execute below Terraform commands to provision the infrastructure:
 
@@ -121,9 +121,7 @@ A sample `workspace-dev.json` file is provided with this example. This file crea
         "value": "[\"mx2.4x32\"]",
         "type": "list(string)"
       },
-
 ...
-
 ```      
 
 Execute the below Schematics commands:
