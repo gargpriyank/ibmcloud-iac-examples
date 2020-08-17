@@ -1,6 +1,6 @@
 # Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC Gen2
 
-This directory contains terraform code to create IBM cloud VPC infrastructure, Red Hat OpenShift cluster in VPC, VPN Gateway for VPC-VPC connectivity or VPC to on-premise network, IBM Databases for MongoDB and IBM Event Streams (Kafka).  
+This directory contains terraform code to create IBM cloud VPC infrastructure, Public Gateway for VPC, Red Hat OpenShift cluster in VPC, VPN Gateway for VPC-VPC connectivity or VPC to on-premise network, IBM Databases for MongoDB and IBM Event Streams (Kafka).  
 
 
 - [Infrastructure as Code: Managing Container Registry (ICR) & Kubernetes Services (IKS) Resources](#infrastructure-as-code-managing-container-registry-icr--kubernetes-services-iks-resources)
