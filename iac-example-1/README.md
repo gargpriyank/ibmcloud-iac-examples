@@ -51,7 +51,7 @@ export IC_API_KEY=$(grep '"apikey":' ~/ibm_api_key.json | sed 's/.*: "\(.*\)".*/
 
 ## How to use with Terraform
 
-A sample `terraform.tfvars` file is provided with this example. This file crates resources in Frankfurt region. Feel free to replace the variables value as per your project requirement.
+A sample `terraform.tfvars` file is provided with this example. This file creates resources in Frankfurt region in single zone. Sample multizone example of `terraform.tfvars` is available in multizone directory. Please replace the values of the variables as per your project requirement.
 
    ```hcl-terraform
    project_name                   = "iac-example"
@@ -79,6 +79,8 @@ terraform destroy
 ```
 
 ## How to use with Schematics
+
+A sample `workspace-dev.json` file is provided with this example. This file creates resources in Frankfurt region in single zone. Sample multizone example of `workspace-dev.json` is available in multizone directory. Please replace the values of the variables as per your project requirement.
 
 Schematics delivers Terraform as a Service. Execute the below commands:
 
