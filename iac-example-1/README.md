@@ -120,7 +120,7 @@ A sample `workspace-dev.json` file is provided with this example. This file crea
         "name": "flavors",
         "value": "[\"mx2.4x32\"]",
         "type": "list(string)"
-      },
+      }
 ...
 ```      
 
