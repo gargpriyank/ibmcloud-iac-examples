@@ -37,12 +37,12 @@
       },
       {
         "name": "vpc_zone_names",
-        "value": "[\"eu-de-1\"]",
+        "value": "[\"eu-de-1\", \"eu-de-2\"]",
         "type": "list(string)"
       },
       {
         "name": "flavors",
-        "value": "[\"mx2.4x32\"]",
+        "value": "[\"mx2.4x32\", \"mx2.4x32\"]",
         "type": "list(string)"
       },
       {
@@ -132,7 +132,7 @@
       },
       {
         "name": "vpn_connection_pre_shared_key",
-        "value": "[\"vpndemo123\"]",
+        "value": "[\"vpndemo123\", \"vpndemo345\"]",
         "type": "list(string)"
       },
       {
@@ -152,17 +152,17 @@
       },
       {
         "name": "vpn_connection_action",
-        "value": "[\"restart\"]",
+        "value": "[\"restart\", \"restart\"]",
         "type": "list(string)"
       },
       {
         "name": "vpn_peer_cidr",
-        "value": "[\"192.168.0.0/24\"]",
+        "value": "[\"192.168.0.0/24\", \"192.168.1.0/24\"]",
         "type": "list(string)"
       },
       {
         "name": "vpn_peer_public_address",
-        "value": "[\"52.116.137.73\"]",
+        "value": "[\"52.116.137.73\", \"52.116.137.74\"]",
         "type": "list(string)"
       }
     ]
