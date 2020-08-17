@@ -83,7 +83,44 @@ terraform destroy
 
 Schematics delivers Terraform as a Service. 
 
-A sample `workspace-dev.json` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multizone sample file is available in multizone directory. Please replace the values of the variables as per your project requirement.
+A sample `workspace-dev.json` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multizone sample file is available in multizone directory.
+#### Note: Please replace the values of the variables as per your project requirement.
+
+```json
+"template_data": [{
+    "folder": ".",
+    "type": "terraform_v0.12",
+    "variablestore": [{
+      "name": "project_name",
+      "value": "iac-example-1",
+      "type": "string"
+    },
+      {
+        "name": "environment",
+        "value": "dev",
+        "type": "string"
+      },
+      {
+        "name": "resource_group",
+        "value": "iac-example-rg",
+        "type": "string"
+      },
+      {
+        "name": "region",
+        "value": "eu-de",
+        "type": "string"
+      },
+      {
+        "name": "vpc_zone_names",
+        "value": "[\"eu-de-1\"]",
+        "type": "list(string)"
+      },
+      {
+        "name": "flavors",
+        "value": "[\"mx2.4x32\"]",
+        "type": "list(string)"
+      },
+```      
 
 Execute the below Schematics commands:
 
