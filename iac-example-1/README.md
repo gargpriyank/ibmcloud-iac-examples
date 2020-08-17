@@ -1,6 +1,7 @@
 # Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC Gen2
 
-This directory contains terraform code to create a minimum Red Hat OpenShift cluster in a VPC. Note that in order for the OpenShift Web console and the OperatorHub to be operational, the VPC will be configured with a public gateway to allow outbound Internet traffic from the worker nodes.
+This directory contains terraform code to create IBM cloud VPC infrastructure, Red Hat OpenShift cluster in VPC, VPN Gateway to connect to other VPC or on-premise network and IBM Databases for MongoDB, IBM Event Streams.  
+
 
 - [Infrastructure as Code: Managing Container Registry (ICR) & Kubernetes Services (IKS) Resources](#infrastructure-as-code-managing-container-registry-icr--kubernetes-services-iks-resources)
   - [General Requirements](#general-requirements)
