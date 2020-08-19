@@ -72,7 +72,7 @@
       },
       {
         "name": "db_admin_password",
-        "value": "password123",
+        "value": "nonsecurepassword",
         "type": "string"
       },
       {
@@ -132,7 +132,7 @@
       },
       {
         "name": "vpn_connection_pre_shared_key",
-        "value": "[\"vpndemo123\"]",
+        "value": "[\"nonsecurekey\"]",
         "type": "list(string)"
       },
       {
