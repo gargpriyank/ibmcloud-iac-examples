@@ -7,8 +7,8 @@ This directory contains terraform code to create IBM cloud VPC infrastructure, R
   - [General Requirements](#general-requirements)
   - [How to use with Terraform](#how-to-use-with-terraform)
   - [How to use with Schematics](#how-to-use-with-schematics)
-  - [Project Validation](#project-validation)
   - [How to use IBM Cloud Registry](#how-to-use-ibm-cloud-registry)
+  - [Project Validation](#project-validation)
 
 ## General Requirements
 
@@ -152,6 +152,27 @@ ibmcloud schematics logs  --id $WORKSPACE_ID --act-id Activity_ID
 ibmcloud schematics workspace delete --id $WORKSPACE_ID
 ibmcloud schematics workspace list
 ```
+## How to use IBM Cloud Registry
+
+Install the Container Registry plug-in if not installed.
+
+```bash
+ibmcloud plugin install -f -r "IBM Cloud" container-registry
+```
+
+Execute the following commands to create the registry namespace.
+
+```bash
+ibmcloud login -a https://cloud.ibm.com     # Login to IBM cloud account. In case of single sign on, use --sso.
+ibmcloud cr region-set eu-central   # Set the registry region. For an example, Frankfort region is set here.
+ibmcloud cr namespace-add iac-example-ns    #Create namespace. For an example, iac-example-ns namespace is created here.
+```
+
+Following is an example of hello-world application image deployed in `iac-example-ns` namespace in Frankfort region.
+
+```bash
+de.icr.io/iac-example-ns/hello_world_repo:1.0   # de.icr.io is the Registry URL, hello_world_repo is the repository, 1.0 is image version.
+```
 
 ## Project Validation
 
@@ -191,26 +212,4 @@ Some `oc` commands to verify you have access are:
 oc cluster-info
 oc get nodes
 oc get pods -A
-```
-
-## How to use IBM Cloud Registry
-
-Install the Container Registry plug-in if not installed.
-
-```bash
-ibmcloud plugin install -f -r "IBM Cloud" container-registry
-```
-
-Execute the following commands to create the registry namespace.
-
-```bash
-ibmcloud login -a https://cloud.ibm.com     # Login to IBM cloud account. In case of single sign on, use --sso.
-ibmcloud cr region-set eu-central   # Set the registry region. For an example, Frankfort region is set here.
-ibmcloud cr namespace-add iac-example-ns    #Create namespace. For an example, iac-example-ns namespace is created here.
-```
-
-Following is an example of hello-world application image deployed in `iac-example-ns` namespace in Frankfort region.
-
-```bash
-de.icr.io/iac-example-ns/hello_world_repo:1.0   # de.icr.io is the Registry URL, hello_world_repo is the repository, 1.0 is image version.
 ```
