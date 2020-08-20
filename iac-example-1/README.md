@@ -1,6 +1,6 @@
 # Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC Gen2
 
-This directory contains terraform code to create IBM cloud VPC infrastructure, Public Gateway for VPC, Red Hat OpenShift cluster in VPC, VPN Gateway for VPC-VPC connectivity or VPC to on-premise network, IBM Databases for MongoDB and IBM Event Streams (Kafka).  
+This directory contains terraform code to create IBM cloud VPC infrastructure, Red Hat OpenShift cluster in VPC, VPN Gateway to connect to other VPC or on-premise network, IBM Databases for MongoDB and IBM Event Streams (Kafka).  
 
 
 - [Infrastructure as Code: Managing Container Registry (ICR) & Kubernetes Services (IKS) Resources](#infrastructure-as-code-managing-container-registry-icr--kubernetes-services-iks-resources)
@@ -8,6 +8,7 @@ This directory contains terraform code to create IBM cloud VPC infrastructure, P
   - [How to use with Terraform](#how-to-use-with-terraform)
   - [How to use with Schematics](#how-to-use-with-schematics)
   - [Project Validation](#project-validation)
+  - [How to use IBM Cloud Registry](#how-to-use-ibm-cloud-registry)
 
 ## General Requirements
 
@@ -21,7 +22,7 @@ Same for every pattern, the requirements are documented in the [Environment Setu
 - [Install IBM Cloud Terraform Provider](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud)
 - [Configure access to IBM Cloud](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud) for Terraform and the IBM Cloud CLI
 - (Optional) Install some utility tools such as: [jq](https://stedolan.github.io/jq/download/) and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-- Install OpenShift CLI (OC) from OpenShift console by clicking ? button on the top right corner and selecting Command Line Tools option.
+- (Optional) Install OpenShift CLI (OC) from OpenShift console by clicking ? button on the top right corner and selecting Command Line Tools option.
 
 > For OpenShift clusters on VPC Gen 2, the IBM Cloud Terraform provider must be version 1.8.0 or later. This example is using Terraform version 0.12.0.
 
@@ -51,8 +52,8 @@ export IC_API_KEY=$(grep '"apikey":' ~/ibm_api_key.json | sed 's/.*: "\(.*\)".*/
 
 ## How to use with Terraform
 
-A sample `terraform.tfvars` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multi zone sample file is available in multizone directory. 
-#### Note: Variables values provided in `terraform.tfvars` are not real and are mocked. Please replace the values of the variables as per your project requirement in your local and never commit `terraform.tfvars` file.
+A sample `terraform.tfvars` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multizone sample file is available in multizone directory. 
+#### Note: Please replace the values of the variables as per your project requirement.
 
 ```hcl-terraform
 project_name                   = "iac-example"
@@ -83,8 +84,8 @@ terraform destroy
 
 Schematics delivers Terraform as a Service. 
 
-A sample `workspace-dev.json` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multi zone sample file is available in multizone directory.
-#### Note: Variables values provided in `workspace-dev.json` are not real and are mocked. Please replace the values of the variables as per your project requirement in your local and never commit `workspace-dev.json` file.
+A sample `workspace-dev.json` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multizone sample file is available in multizone directory.
+#### Note: Please replace the values of the variables as per your project requirement.
 
 ```json
 ...
@@ -190,4 +191,26 @@ Some `oc` commands to verify you have access are:
 oc cluster-info
 oc get nodes
 oc get pods -A
+```
+
+## How to use IBM Cloud Registry
+
+Install the Container Registry plug-in if not installed.
+
+```bash
+ibmcloud plugin install -f -r "IBM Cloud" container-registry
+```
+
+Execute the following commands to create the registry namespace.
+
+```bash
+ibmcloud login -a https://cloud.ibm.com     # Login to IBM cloud account. In case of single sign on, use --sso.
+ibmcloud cr region-set eu-central   # Set the registry region. For an example, Frankfort region is set here.
+ibmcloud cr namespace-add iac-example-ns    #Create namespace. For an example, iac-example-ns namespace is created here.
+```
+
+Following is an example of hello-world application image deployed in iac-example-ns namespace in Frankfort region.
+
+```bash
+de.icr.io/iac-example-ns/hello_world_repo:1.0   # de.icr.io is the Registry URL, hello_world_repo is the repository, 1.0 is image version.
 ```
