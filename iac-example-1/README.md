@@ -171,7 +171,7 @@ ibmcloud cr namespace-add iac-example-ns    #Create namespace. For an example, i
 Following is an example of hello-world application image deployed in `iac-example-ns` namespace in Frankfort region.
 
 ```bash
-de.icr.io/iac-example-ns/hello_world_repo:1.0   # de.icr.io is the Registry URL, hello_world_repo is the repository, 1.0 is image version.
+de.icr.io/iac-example-ns/hello_world_repo:1.0   # de.icr.io is the Registry URL, hello_world_repo is the image repository, 1.0 is image version.
 ```
 
 ## Project Validation
