@@ -48,7 +48,7 @@ variable "db_service_name" {
 
 variable "db_admin_password" {
   type    = string
-  default = "insecure_password"
+  default = "insecurepassword"
 }
 
 variable "db_memory_allocation" {
