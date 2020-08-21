@@ -108,7 +108,7 @@ variable "es_kafka_topic_segment_bytes" {
 
 variable "vpn_connection_pre_shared_key" {
   type    = list(string)
-  default = ["vpmdemo123"]
+  default = ["insecuresharedkey"]
 }
 
 variable "vpn_connection_interval" {
