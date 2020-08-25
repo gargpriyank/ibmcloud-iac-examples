@@ -164,8 +164,8 @@ Execute the following commands to create the registry namespace.
 
 ```bash
 ibmcloud login -a https://cloud.ibm.com     # Login to IBM cloud account. In case of single sign on, use --sso.
-ibmcloud cr region-set eu-central   # Set the registry region. For an example, Frankfort region is set here.
-ibmcloud cr namespace-add iac-example-ns    #Create namespace. For an example, iac-example-ns namespace is created here.
+ibmcloud cr region-set eu-central   # Set the registry region. For an example, eu-central (Frankfort) region is set here.
+ibmcloud cr namespace-add iac-example-ns    # Create namespace. For an example, iac-example-ns namespace is created here.
 ```
 
 Following is an example of `hello-world` application image deployed in `iac-example-ns` namespace in Frankfort region.

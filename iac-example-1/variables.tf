@@ -48,7 +48,7 @@ variable "db_service_name" {
 
 variable "db_admin_password" {
   type    = string
-  default = "insecure_password"
+  default = "insecurepassword"
 }
 
 variable "db_memory_allocation" {
@@ -108,7 +108,7 @@ variable "es_kafka_topic_segment_bytes" {
 
 variable "vpn_connection_pre_shared_key" {
   type    = list(string)
-  default = ["vpmdemo123"]
+  default = ["insecuresharedkey"]
 }
 
 variable "vpn_connection_interval" {
