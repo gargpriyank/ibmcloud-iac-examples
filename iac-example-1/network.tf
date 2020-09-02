@@ -9,7 +9,7 @@ resource "ibm_is_vpc_address_prefix" "vpc_address_prefix" {
   name  = "${var.project_name}-${var.environment}-range-${format("%02s", count.index)}"
   zone  = var.vpc_zone_names[count.index]
   vpc   = ibm_is_vpc.iac_iks_vpc.id
-  cidr  = "172.25.${format("%01s", count.index)}.0/24"
+  cidr  = "172.25.40.${format("%01s", count.index)}/26"
 }
 
 resource "ibm_is_subnet" "iac_iks_subnet" {
@@ -18,7 +18,7 @@ resource "ibm_is_subnet" "iac_iks_subnet" {
   zone                     = var.vpc_zone_names[count.index]
   vpc                      = ibm_is_vpc.iac_iks_vpc.id
   public_gateway           = ibm_is_public_gateway.iac_iks_gateway[count.index].id
-  ipv4_cidr_block          = "172.25.${format("%01s", count.index)}.0/26"
+  ipv4_cidr_block          = "172.25.40.${format("%01s", count.index)}/26"
   resource_group           = data.ibm_resource_group.group.id
   depends_on               = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
