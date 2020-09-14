@@ -1,5 +1,5 @@
 resource "ibm_is_vpn_gateway" "iac_vpn_gateway" {
-  count          = local.max_size
+  count          = var.enable_vpn ? local.max_size : 0
   name           = "${var.project_name}-${var.environment}-vpn-gateway-${format("%02s", count.index)}"
   subnet         = ibm_is_subnet.iac_iks_subnet[count.index].id
   resource_group = data.ibm_resource_group.group.id
@@ -7,7 +7,7 @@ resource "ibm_is_vpn_gateway" "iac_vpn_gateway" {
 }
 
 resource "ibm_is_vpn_gateway_connection" "VPNGatewayConnection" {
-  count          = local.max_size
+  count          = var.enable_vpn ? local.max_size : 0
   name           = "${var.project_name}-${var.environment}-vpn-connection-${format("%02s", count.index)}"
   vpn_gateway    = ibm_is_vpn_gateway.iac_vpn_gateway[count.index].id
   peer_address   = var.vpn_peer_public_address[count.index]

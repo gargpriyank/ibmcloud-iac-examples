@@ -1,4 +1,5 @@
 resource "ibm_resource_instance" "es_instance_1" {
+  count             = var.enable_event_streams_service ? 1 : 0
   name              = var.es_kafka_service_name
   service           = "messagehub"
   plan              = var.es_kafka_plan
@@ -7,7 +8,8 @@ resource "ibm_resource_instance" "es_instance_1" {
 }
 
 resource "ibm_event_streams_topic" "es_topic_1" {
-  resource_instance_id = ibm_resource_instance.es_instance_1.id
+  count                = var.enable_event_streams_service ? 1 : 0
+  resource_instance_id = ibm_resource_instance.es_instance_1[count.index].id
   name                 = var.es_kafka_topic_name
   partitions           = var.es_kafka_topic_partitions
   config = {

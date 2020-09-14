@@ -39,7 +39,7 @@
         },
         {
           "name": "vpc_zone_names",
-          "value": "[\"eu-de-1\", \"eu-de-2\"]",
+          "value": "[\"eu-de-1\"]",
           "type": "list(string)"
         },
         {
@@ -49,7 +49,7 @@
         },
         {
           "name": "address_prefix_cidr",
-          "value": "[\"172.25.40.0/24\", \"172.25.41.0/24\"]",
+          "value": "[\"172.25.40.0/24\"]",
           "type": "list(string)"
         },
         {
@@ -59,7 +59,7 @@
         },
         {
           "name": "subnet_cidr",
-          "value": "[\"172.25.40.0/26\", \"172.25.41.0/26\"]",
+          "value": "[\"172.25.40.0/26\"]",
           "type": "list(string)"
         },
         {
@@ -69,12 +69,12 @@
         },
         {
           "name": "flavors",
-          "value": "[\"mx2.4x32\", \"mx2.4x32\"]",
+          "value": "[\"mx2.4x32\"]",
           "type": "list(string)"
         },
         {
           "name": "workers_count",
-          "value": "[2, 2]",
+          "value": "[2]",
           "type": "list(number)"
         },
         {
@@ -174,37 +174,37 @@
         },
         {
           "name": "vpn_connection_pre_shared_key",
-          "value": "[\"insecuresharedkey\", \"insecuresharedkey\"]",
+          "value": "[\"insecuresharedkey\"]",
           "type": "list(string)"
         },
         {
           "name": "vpn_connection_interval",
-          "value": "[30, 30]",
+          "value": "[30]",
           "type": "list(number)"
         },
         {
           "name": "vpn_connection_timeout",
-          "value": "[120, 120]",
+          "value": "[120]",
           "type": "list(number)"
         },
         {
           "name": "vpn_connection_admin_state_up",
-          "value": "[true, true]",
+          "value": "[true]",
           "type": "list(bool)"
         },
         {
           "name": "vpn_connection_action",
-          "value": "[\"restart\", \"restart\"]",
+          "value": "[\"restart\"]",
           "type": "list(string)"
         },
         {
           "name": "vpn_peer_cidr",
-          "value": "[\"192.168.0.0/24\", \"192.168.1.0/24\"]",
+          "value": "[\"192.168.0.0/24\"]",
           "type": "list(string)"
         },
         {
           "name": "vpn_peer_public_address",
-          "value": "[\"52.116.137.73\", \"52.116.138.73\"]",
+          "value": "[\"52.116.137.73\"]",
           "type": "list(string)"
         }
       ]

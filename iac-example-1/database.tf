@@ -1,4 +1,5 @@
 resource "ibm_database" "iac_app_db_instance" {
+  count                        = var.enable_db_service ? 1 : 0
   name                         = var.db_name
   plan                         = var.db_plan
   location                     = var.region

@@ -1,9 +1,12 @@
-# Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC Gen2
+# Infrastructure as Code example 1
 
-This directory contains terraform code to create IBM cloud VPC infrastructure, Red Hat OpenShift cluster in VPC, VPN Gateway to connect to other VPC or on-premise network, IBM Databases for MongoDB and IBM Event Streams (Kafka).  
+This directory contains the terraform code to provision IBM cloud VPC infrastructure Gen 2, Red Hat OpenShift cluster in VPC, Public Gateway, VPN
+Gateway to connect to other VPC network or on-premise network, IBM Databases for MongoDB and IBM Event Streams (Kafka).
+This code provides the flexibility to use custom CIDR for address prefix and subnets. Public Gateway, VPN Gateway , IBM Databases for MongoDB and IBM
+Event Streams are optional and can bet set as false to not to provision it.
 
-
-- [Infrastructure as Code: Managing Container Registry (ICR) & Kubernetes Services (IKS) Resources](#infrastructure-as-code-managing-container-registry-icr--kubernetes-services-iks-resources)
+- [Infrastructure as Code: Managing Container Registry (ICR) & Kubernetes Services (IKS) Resources](#infrastructure-as-code-managing-container
+-registry-icr--kubernetes-services-iks-resources)
   - [General Requirements](#general-requirements)
   - [How to use with Terraform](#how-to-use-with-terraform)
   - [How to use with Schematics](#how-to-use-with-schematics)
@@ -12,19 +15,24 @@ This directory contains terraform code to create IBM cloud VPC infrastructure, R
 
 ## General Requirements
 
-Same for every pattern, the requirements are documented in the [Environment Setup](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment). It includes:
+Same for every pattern, the requirements are documented in the [Environment Setup](https://ibm.github.io/cloud-enterprise-examples/iac/setup
+-environment). It includes:
 
 - Have an IBM Cloud account with required privileges
 - [Install IBM Cloud CLI](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#install-ibm-cloud-cli)
-- [Install the IBM Cloud CLI Plugins](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#ibm-cloud-cli-plugins) `infrastructure-service`, `schematics` and `container-registry`.
+- [Install the IBM Cloud CLI Plugins](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#ibm-cloud-cli-plugins) `infrastructure
+-service`, `schematics` and `container-registry`.
 - [Login to IBM Cloud with the CLI](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#login-to-ibm-cloud)
 - [Install Terraform](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#install-terraform)
 - [Install IBM Cloud Terraform Provider](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud)
-- [Configure access to IBM Cloud](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud) for Terraform and the IBM Cloud CLI
-- (Optional) Install some utility tools such as: [jq](https://stedolan.github.io/jq/download/) and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [Configure access to IBM Cloud](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud) for
+ Terraform and the IBM Cloud CLI
+- (Optional) Install some utility tools such as: [jq](https://stedolan.github.io/jq/download/) and [kubectl](https://kubernetes.io/docs/tasks/tools
+/install-kubectl/)
 - (Optional) Install OpenShift CLI (OC) from OpenShift console by clicking ? button on the top right corner and selecting Command Line Tools option.
 
-> For OpenShift clusters on VPC Gen 2, the IBM Cloud Terraform provider must be version 1.8.0 or later. This example is using Terraform version 0.12.0.
+> For OpenShift clusters on VPC Gen 2, the IBM Cloud Terraform provider must be version 1.8.0 or later. This example is using Terraform version
+> 0.12.0.
 
 Executing these commands you are validating part of these requirements:
 
@@ -38,7 +46,8 @@ ls ~/.terraform.d/plugins/terraform-provider-ibm_*
 echo $IC_API_KEY
 ```
 
-If you have an API Key but is not set neither have the JSON file when it was created, you must recreate the key. Delete the old one if won't be in use anymore.
+If you have an API Key but is not set neither have the JSON file when it was created, you must recreate the key. Delete the old one if won't be in
+use anymore.
 
 ```bash
 # Delete the old one, if won't be in use anymore
@@ -52,17 +61,19 @@ export IC_API_KEY=$(grep '"apikey":' ~/ibm_api_key.json | sed 's/.*: "\(.*\)".*/
 
 ## How to use with Terraform
 
-A sample `terraform.tfvars` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multizone sample file is available in multizone directory. 
-> Note: Please replace the values of the variables as per your project requirement.
+A sample `terraform.tfvars` file is provided with this example. This file creates resources in Frankfurt region in multizone zone. A single zone
+sample file is available in **singlezone** directory.
+
+> Note: Please replace the values of the variables as per your project requirement. It's advisable to not to commit `terraform.tfvars` file.
 
 ```hcl-terraform
 project_name                   = "iac-example"
 environment                    = "dev"
 resource_group                 = "iac-example-dev-rg"
 region                         = "eu-de"
-vpc_zone_names                 = ["eu-de-1"]
-flavors                        = ["mx2.4x32"]
-workers_count                  = [2]
+vpc_zone_names                 = ["eu-de-1", "eu-de-2"]
+flavors                        = ["mx2.4x32", "mx2.4x32"]
+workers_count                  = [2, 1]
 ...
 ```
 
@@ -84,8 +95,9 @@ terraform destroy
 
 Schematics delivers Terraform as a Service. 
 
-A sample `workspace-dev.json` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multizone sample file is available in multizone directory.
-> Note: Please replace the values of the variables as per your project requirement.
+A sample `workspace-dev.json` file is provided with this example. This file creates resources in Frankfurt region in multizone zone. A single zone
+sample file is available in **singlezone** directory.
+> Note: Please replace the values of the variables as per your project requirement. It's advisable to not to commit `workspace-dev.json` file.
 
 ```json
 ...
@@ -114,12 +126,12 @@ A sample `workspace-dev.json` file is provided with this example. This file crea
       },
       {
         "name": "vpc_zone_names",
-        "value": "[\"eu-de-1\"]",
+        "value": "[\"eu-de-1\", \"eu-de-2\"]",
         "type": "list(string)"
       },
       {
         "name": "flavors",
-        "value": "[\"mx2.4x32\"]",
+        "value": "[\"mx2.4x32\", \"mx2.4x32\"]",
         "type": "list(string)"
       },
 ...
