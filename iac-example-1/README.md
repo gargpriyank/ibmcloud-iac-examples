@@ -3,10 +3,9 @@
 This directory contains the terraform code to provision IBM cloud VPC infrastructure Gen 2, Red Hat OpenShift cluster in VPC, Public Gateway, VPN
 Gateway to connect to other VPC network or on-premise network, IBM Databases for MongoDB and IBM Event Streams (Kafka).
 This code provides the flexibility to use custom CIDR for address prefix and subnets. Public Gateway, VPN Gateway , IBM Databases for MongoDB and IBM
-Event Streams are optional and can bet set as false to not to provision it.
+Event Streams are optional and can be set as false to not to provision it.
 
-- [Infrastructure as Code: Managing Container Registry (ICR) & Kubernetes Services (IKS) Resources](#infrastructure-as-code-managing-container
--registry-icr--kubernetes-services-iks-resources)
+- [Infrastructure as Code: Managing Container Registry (ICR) & Kubernetes Services (IKS) Resources](#infrastructure-as-code-managing-container-registry-icr--kubernetes-services-iks-resources)
   - [General Requirements](#general-requirements)
   - [How to use with Terraform](#how-to-use-with-terraform)
   - [How to use with Schematics](#how-to-use-with-schematics)
