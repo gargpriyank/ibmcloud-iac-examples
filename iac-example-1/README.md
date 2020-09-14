@@ -44,7 +44,7 @@ ls ~/.terraform.d/plugins/terraform-provider-ibm_*
 echo $IC_API_KEY
 ```
 
-If you have an API Key but is not set neither have the JSON file when it was created, you must recreate the key. Delete the old one if won't be in
+If you have an API Key but is not set, neither have the JSON file when it was created, you must recreate the key. Delete the old one if won't be in
 use anymore.
 
 ```bash
@@ -62,7 +62,8 @@ export IC_API_KEY=$(grep '"apikey":' ~/ibm_api_key.json | sed 's/.*: "\(.*\)".*/
 A sample `terraform.tfvars` file is provided with this example. This file creates resources in Frankfurt region in multizone zone. A single zone
 sample file is available in **singlezone** directory.
 
-> Note: Please replace the values of the variables as per your project requirement. It's advisable to not to commit `terraform.tfvars` file.
+> Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `terraform.tfvars` file in any
+> repository since it may contain sensitive information like password.
 
 ```hcl-terraform
 project_name                   = "iac-example"
@@ -95,7 +96,8 @@ Schematics delivers Terraform as a Service.
 
 A sample `workspace-dev.json` file is provided with this example. This file creates resources in Frankfurt region in multizone zone. A single zone
 sample file is available in **singlezone** directory.
-> Note: Please replace the values of the variables as per your project requirement. It's advisable to not to commit `workspace-dev.json` file.
+> Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `workspace-dev.json` file in any
+> repository since it may contain sensitive information like password.
 
 ```json
 ...
