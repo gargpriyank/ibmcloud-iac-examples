@@ -22,9 +22,9 @@ Same for every pattern, the requirements are documented in the
   `infrastructure-service`, `schematics` and `container-registry`.
 - [Login to IBM Cloud with the CLI](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#login-to-ibm-cloud)
 - [Install Terraform](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#install-terraform)
-- [Install IBM Cloud Terraform Provider](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud)
 - [Configure access to IBM Cloud](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud) for
   Terraform and the IBM Cloud CLI
+- [Install IBM Cloud Terraform Provider](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud)
 - (Optional) Install some utility tools such as: [jq](https://stedolan.github.io/jq/download/) 
   and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - (Optional) Install OpenShift CLI (OC) from OpenShift console by clicking ? button on the top right corner and selecting Command Line Tools option.
