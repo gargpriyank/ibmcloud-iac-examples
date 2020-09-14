@@ -5,29 +5,28 @@ Gateway to connect to other VPC network or on-premise network, IBM Databases for
 This code provides the flexibility to use custom CIDR for address prefix and subnets. Public Gateway, VPN Gateway , IBM Databases for MongoDB and IBM
 Event Streams are optional and can be set as false to not to provision it.
 
-- [Infrastructure as Code: Managing Container Registry (ICR) & Kubernetes Services (IKS) Resources](#infrastructure-as-code-managing-container-registry-icr--kubernetes-services-iks-resources)
-  - [General Requirements](#general-requirements)
-  - [How to use with Terraform](#how-to-use-with-terraform)
-  - [How to use with Schematics](#how-to-use-with-schematics)
-  - [How to use IBM Cloud Registry](#how-to-use-ibm-cloud-registry)
-  - [Project Validation](#project-validation)
+- [General Requirements](#general-requirements)
+- [How to use with Terraform](#how-to-use-with-terraform)
+- [How to use with Schematics](#how-to-use-with-schematics)
+- [How to use IBM Cloud Registry](#how-to-use-ibm-cloud-registry)
+- [Project Validation](#project-validation)
 
 ## General Requirements
 
-Same for every pattern, the requirements are documented in the [Environment Setup](https://ibm.github.io/cloud-enterprise-examples/iac/setup
--environment). It includes:
+Same for every pattern, the requirements are documented in the 
+[Environment Setup](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment). It includes:
 
 - Have an IBM Cloud account with required privileges
 - [Install IBM Cloud CLI](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#install-ibm-cloud-cli)
-- [Install the IBM Cloud CLI Plugins](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#ibm-cloud-cli-plugins) `infrastructure
--service`, `schematics` and `container-registry`.
+- [Install the IBM Cloud CLI Plugins](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#ibm-cloud-cli-plugins) 
+  `infrastructure-service`, `schematics` and `container-registry`.
 - [Login to IBM Cloud with the CLI](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#login-to-ibm-cloud)
 - [Install Terraform](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#install-terraform)
 - [Install IBM Cloud Terraform Provider](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud)
 - [Configure access to IBM Cloud](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud) for
- Terraform and the IBM Cloud CLI
-- (Optional) Install some utility tools such as: [jq](https://stedolan.github.io/jq/download/) and [kubectl](https://kubernetes.io/docs/tasks/tools
-/install-kubectl/)
+  Terraform and the IBM Cloud CLI
+- (Optional) Install some utility tools such as: [jq](https://stedolan.github.io/jq/download/) 
+  and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - (Optional) Install OpenShift CLI (OC) from OpenShift console by clicking ? button on the top right corner and selecting Command Line Tools option.
 
 > For OpenShift clusters on VPC Gen 2, the IBM Cloud Terraform provider must be version 1.8.0 or later. This example is using Terraform version
