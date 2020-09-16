@@ -1,1 +1,1 @@
-# This repository covers some IaC examples to lay down IBM cloud infrastructure.
+# This repository covers some IaC examples to provision IBM cloud infrastructure.
