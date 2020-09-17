@@ -1,7 +1,7 @@
 # Infrastructure as Code example 1
 
 This directory contains the terraform code to provision IBM cloud VPC infrastructure Gen 2, Red Hat OpenShift cluster in VPC, Public Gateway, VPN
-Gateway to connect to other VPC network or on-premise network, IBM Databases for MongoDB (Configurable to any other IBM database service) and IBM
+Gateway to connect to other VPC network or on-premise network, IBM Databases for MongoDB (configurable to any other IBM database service) and IBM
 Event Streams (Kafka).
 
 ![Network Architecture](https://github.com/gargpriyank/ibmcloud-examples/blob/master/iac-example-1/images/Network_Architecture.png)
