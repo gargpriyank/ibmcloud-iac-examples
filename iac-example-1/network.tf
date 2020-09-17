@@ -9,7 +9,7 @@ resource "ibm_is_vpc_address_prefix" "vpc_address_prefix" {
   name  = "${var.project_name}-${var.environment}-range-${format("%02s", count.index)}"
   zone  = var.vpc_zone_names[count.index]
   vpc   = ibm_is_vpc.iac_iks_vpc.id
-  cidr = var.enable_custom_address_prefix ? var.address_prefix_cidr[count.index] : "172.25.${format("%01s", count.index)}.0/24"
+  cidr = var.enable_custom_address_prefix ? var.address_prefix_cidr[count.index] : "10.0.${format("%01s", count.index)}.0/24"
 }
 
 resource "ibm_is_subnet" "iac_iks_subnet" {
@@ -18,7 +18,7 @@ resource "ibm_is_subnet" "iac_iks_subnet" {
   zone                     = var.vpc_zone_names[count.index]
   vpc                      = ibm_is_vpc.iac_iks_vpc.id
   public_gateway           = var.enable_public_gateway ? ibm_is_public_gateway.iac_iks_gateway[count.index].id : ""
-  ipv4_cidr_block          = var.enable_custom_subnet ? var.subnet_cidr[count.index] : "172.25.${format("%01s", count.index)}.0/26"
+  ipv4_cidr_block          = var.enable_custom_subnet ? var.subnet_cidr[count.index] : "10.0.${format("%01s", count.index)}.0/26"
   resource_group           = data.ibm_resource_group.group.id
   depends_on               = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
@@ -43,6 +43,6 @@ resource "ibm_is_public_gateway" "iac_iks_gateway" {
   resource_group = data.ibm_resource_group.group.id
 
   timeouts {
-      create = "90m"
+    create = "90m"
   }
 }
