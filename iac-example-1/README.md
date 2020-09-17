@@ -2,12 +2,14 @@
 
 This directory contains the terraform code to provision IBM cloud VPC infrastructure Gen 2, Red Hat OpenShift cluster in VPC, Public Gateway, VPN
 Gateway to connect to other VPC network or on-premise network, IBM Databases for MongoDB (Configurable to any other IBM database service) and IBM
-Event Streams (Kafka). This code provides the flexibility to use custom CIDR for address prefix (enable_custom_address_prefix) and subnets
+Event Streams (Kafka).
+
+![Network Architecture](https://github.com/gargpriyank/ibmcloud-examples/blob/master/iac-example-1/images/Network_Architecture.png)
+
+This code provides the flexibility to use custom CIDR for address prefix (enable_custom_address_prefix) and subnets
 (enable_custom_subnet). If custom flag is set to false, it will create address prefix and subnets using 10.0.*.0. Public Gateway
 (enable_public_gateway), VPN Gateway (enable_vpn), IBM Databases for MongoDB (enable_db_service) and IBM Event Streams
 (enable_event_streams_service) are optional and can be set as false to not to provision it.
-
-![Network Architecture](https://github.com/gargpriyank/ibmcloud-examples/blob/master/iac-example-1/images/Network_Architecture.png)
 
 - [General Requirements](#general-requirements)
 - [How to use with Terraform](#how-to-use-with-terraform)
