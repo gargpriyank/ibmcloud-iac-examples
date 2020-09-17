@@ -7,7 +7,7 @@ Event Streams (Kafka).
 ![Network Architecture](https://github.com/gargpriyank/ibmcloud-examples/blob/master/iac-example-1/images/Network_Architecture.png)
 
 This code provides the flexibility to use custom CIDR for address prefix (enable_custom_address_prefix) and subnets
-(enable_custom_subnet). If custom flag is set to false, it will create address prefix and subnets using 10.0.*.0. Public Gateway
+(enable_custom_subnet). If custom flag is set to false, it will create an address prefix and subnets using 10.0.*.0. Public Gateway
 (enable_public_gateway), VPN Gateway (enable_vpn), IBM Databases for MongoDB (enable_db_service) and IBM Event Streams
 (enable_event_streams_service) are optional and can be set as false to not to provision it.
 
