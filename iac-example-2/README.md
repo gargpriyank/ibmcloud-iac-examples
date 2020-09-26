@@ -1,15 +1,12 @@
-# Infrastructure as Code example 1
+# Infrastructure as Code example 2
 
-This directory contains the terraform code to provision IBM cloud VPC infrastructure Gen 2, Red Hat OpenShift cluster in VPC, Public Gateway, VPN
-Gateway to connect to other VPC network or on-premise network, IBM Databases for MongoDB (configurable to any other IBM database service) and IBM
-Event Streams (Kafka).
+This directory contains the terraform code to provision Red Hat OpenShift Classic, IBM Databases for MongoDB  (configurable to any other IBM
+database service) and IBM Event Streams (Kafka).
 
-![Network Architecture](https://github.com/gargpriyank/ibmcloud-examples/blob/master/iac-example-1/images/Network_Architecture.png)
+![Network Architecture](https://github.com/gargpriyank/ibmcloud-examples/blob/master/iac-example-2/images/Network_Architecture.png)
 
-This code provides the flexibility to use custom CIDR for address prefix (enable_custom_address_prefix) and subnets
-(enable_custom_subnet). If custom flag is set to false, it will create an address prefix and subnets using 10.0.*.0. Public Gateway
-(enable_public_gateway), VPN Gateway (enable_vpn), IBM Databases for MongoDB (enable_db_service) and IBM Event Streams
-(enable_event_streams_service) are optional and can be set as false to not to provision it.
+This code provides the flexibility to keep IBM Databases for MongoDB (enable_db_service) 
+and IBM Event Streams (enable_event_streams_service) optional and can be set as false to not to provision it.
 
 - [General Requirements](#general-requirements)
 - [How to use with Terraform](#how-to-use-with-terraform)
@@ -35,8 +32,7 @@ Same for every pattern, the requirements are documented in the
   and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - (Optional) Install OpenShift CLI (OC) from OpenShift console by clicking ? button on the top right corner and selecting Command Line Tools option.
 
-> For OpenShift clusters on VPC Gen 2, the IBM Cloud Terraform provider must be version 1.8.0 or later. This example is using Terraform version
-> 0.12.0.
+> The IBM Cloud Terraform provider must be version 1.8.0 or later. This example is using Terraform version 0.12.0.
 
 Executing these commands you are validating part of these requirements:
 
@@ -72,13 +68,11 @@ sample file is available in **singlezone** directory.
 > repository since it may contain sensitive information like password.**
 
 ```hcl-terraform
-project_name                   = "iac-example"
-environment                    = "dev"
-resource_group                 = "iac-example-dev-rg"
-region                         = "eu-de"
-vpc_zone_names                 = ["eu-de-1", "eu-de-2"]
-flavors                        = ["mx2.4x32", "mx2.4x32"]
-workers_count                  = [2, 1]
+project_name                             = "iac-example"
+environment                              = "dev"
+resource_group                           = "iac-example-rg"
+region                                   = "us-south"
+additional_zone_names                    = ["dal12", "dal13"]
 ...
 ```
 
@@ -108,39 +102,31 @@ sample file is available in **singlezone** directory.
 
 ```json
 ...
-"template_data": [{
-    "folder": ".",
-    "type": "terraform_v0.12",
-    "variablestore": [{
-      "name": "project_name",
-      "value": "iac-example",
-      "type": "string"
-    },
-      {
-        "name": "environment",
-        "value": "dev",
-        "type": "string"
-      },
-      {
-        "name": "resource_group",
-        "value": "iac-example-rg",
-        "type": "string"
-      },
-      {
-        "name": "region",
-        "value": "eu-de",
-        "type": "string"
-      },
-      {
-        "name": "vpc_zone_names",
-        "value": "[\"eu-de-1\", \"eu-de-2\"]",
-        "type": "list(string)"
-      },
-      {
-        "name": "flavors",
-        "value": "[\"mx2.4x32\", \"mx2.4x32\"]",
-        "type": "list(string)"
-      },
+"template_data": [
+    {
+      "folder": ".",
+      "type": "terraform_v0.12",
+      "variablestore": [
+        {
+          "name": "project_name",
+          "value": "iac-example",
+          "type": "string"
+        },
+        {
+          "name": "environment",
+          "value": "dev",
+          "type": "string"
+        },
+        {
+          "name": "resource_group",
+          "value": "iac-example-rg",
+          "type": "string"
+        },
+        {
+          "name": "region",
+          "value": "eu-de",
+          "type": "string"
+        },
 ...
 ```      
 

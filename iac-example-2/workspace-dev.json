@@ -10,7 +10,7 @@
     "env:dev"
   ],
   "template_repo": {
-    "url": "https://github.com/gargpriyank/ibmcloud-examples/tree/master/iac-example-1"
+    "url": "https://github.com/gargpriyank/ibmcloud-examples/tree/master/iac-example-2"
   },
   "template_data": [
     {
@@ -38,44 +38,59 @@
           "type": "string"
         },
         {
-          "name": "vpc_zone_names",
-          "value": "[\"eu-de-1\", \"eu-de-2\"]",
-          "type": "list(string)"
+          "name": "datacenter",
+          "value": "dal10",
+          "type": "string"
         },
         {
-          "name": "enable_custom_address_prefix",
-          "value": "true",
-          "type": "bool"
+          "name": "machine_type",
+          "value": "m3c.4x32",
+          "type": "string"
         },
         {
-          "name": "address_prefix_cidr",
-          "value": "[\"172.25.40.0/24\", \"172.25.41.0/24\"]",
-          "type": "list(string)"
+          "name": "additional_zone_names",
+          "value": "[\"dal12\", \"dal13\"]",
+          "type": "string"
         },
         {
-          "name": "enable_custom_subnet",
-          "value": "true",
-          "type": "bool"
-        },
-        {
-          "name": "subnet_cidr",
-          "value": "[\"172.25.40.0/26\", \"172.25.41.0/26\"]",
-          "type": "list(string)"
-        },
-        {
-          "name": "enable_public_gateway",
-          "value": "true",
-          "type": "bool"
-        },
-        {
-          "name": "flavors",
-          "value": "[\"mx2.4x32\", \"mx2.4x32\"]",
-          "type": "list(string)"
+          "name": "hardware",
+          "value": "shared",
+          "type": "string"
         },
         {
           "name": "workers_count",
-          "value": "[2, 2]",
-          "type": "list(number)"
+          "value": "1",
+          "type": "number"
+        },
+        {
+          "name": "public_vlan_id",
+          "value": "2953606",
+          "type": "string"
+        },
+        {
+          "name": "private_vlan_id",
+          "value": "2953608",
+          "type": "string"
+        },
+        {
+          "name": "enable_public_service_endpoint",
+          "value": "true",
+          "type": "string"
+        },
+        {
+          "name": "enable_private_service_endpoint",
+          "value": "true",
+          "type": "string"
+        },
+        {
+          "name": "add_zone_enable_public_service_endpoint",
+          "value": "[\"true\", \"true\"]",
+          "type": "list(string)"
+        },
+        {
+          "name": "add_zone_enable_private_service_endpoint",
+          "value": "[\"true\", \"true\"]",
+          "type": "list(string)"
         },
         {
           "name": "k8s_version",
@@ -84,7 +99,7 @@
         },
         {
           "name": "enable_db_service",
-          "value": "true",
+          "value": "false",
           "type": "bool"
         },
         {
@@ -124,7 +139,7 @@
         },
         {
           "name": "enable_event_streams_service",
-          "value": "true",
+          "value": "false",
           "type": "bool"
         },
         {
@@ -166,46 +181,6 @@
           "name": "es_kafka_topic_segment_bytes",
           "value": "536870912",
           "type": "number"
-        },
-        {
-          "name": "enable_vpn",
-          "value": "true",
-          "type": "bool"
-        },
-        {
-          "name": "vpn_connection_pre_shared_key",
-          "value": "[\"insecuresharedkey\", \"insecuresharedkey\"]",
-          "type": "list(string)"
-        },
-        {
-          "name": "vpn_connection_interval",
-          "value": "[30, 30]",
-          "type": "list(number)"
-        },
-        {
-          "name": "vpn_connection_timeout",
-          "value": "[120, 120]",
-          "type": "list(number)"
-        },
-        {
-          "name": "vpn_connection_admin_state_up",
-          "value": "[true, true]",
-          "type": "list(bool)"
-        },
-        {
-          "name": "vpn_connection_action",
-          "value": "[\"restart\", \"restart\"]",
-          "type": "list(string)"
-        },
-        {
-          "name": "vpn_peer_cidr",
-          "value": "[\"192.168.0.0/24\", \"192.168.1.0/24\"]",
-          "type": "list(string)"
-        },
-        {
-          "name": "vpn_peer_public_address",
-          "value": "[\"52.116.137.73\", \"52.116.138.73\"]",
-          "type": "list(string)"
         }
       ]
     }

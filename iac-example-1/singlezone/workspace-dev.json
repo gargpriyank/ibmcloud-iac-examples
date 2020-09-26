@@ -1,12 +1,12 @@
 {
-  "name": "iac-example-1",
+  "name": "iac-example",
   "type": [
     "terraform_v0.12"
   ],
   "description": "Sample workspace for dev environment",
   "tags": [
-    "app:iac-example-1",
-    "owner:iac-example-1",
+    "app:iac-example",
+    "owner:iac-example",
     "env:dev"
   ],
   "template_repo": {
@@ -19,7 +19,7 @@
       "variablestore": [
         {
           "name": "project_name",
-          "value": "iac-example-1",
+          "value": "iac-example",
           "type": "string"
         },
         {
@@ -89,7 +89,7 @@
         },
         {
           "name": "db_name",
-          "value": "iac-example-1-dev-mongodb",
+          "value": "iac-example-dev-mongodb",
           "type": "string"
         },
         {
@@ -134,12 +134,12 @@
         },
         {
           "name": "es_kafka_service_name",
-          "value": "iac-example-1-kafka",
+          "value": "iac-example-kafka",
           "type": "string"
         },
         {
           "name": "es_kafka_topic_name",
-          "value": "iac-example-1-topic-1",
+          "value": "iac-example-topic-1",
           "type": "string"
         },
         {
