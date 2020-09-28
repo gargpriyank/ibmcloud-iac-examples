@@ -1,11 +1,7 @@
 # Infrastructure as Code example 2
 
 This directory contains the terraform code to provision Red Hat OpenShift Classic, IBM Databases for MongoDB  (configurable to any other IBM
-database service) and IBM Event Streams (Kafka).
-
-![Network Architecture](https://github.com/gargpriyank/ibmcloud-examples/blob/master/iac-example-2/images/Network_Architecture.png)
-
-This code provides the flexibility to keep IBM Databases for MongoDB (enable_db_service) 
+database service) and IBM Event Streams (Kafka). This code provides the flexibility to keep IBM Databases for MongoDB (enable_db_service) 
 and IBM Event Streams (enable_event_streams_service) optional and can be set as false to not to provision it.
 
 - [General Requirements](#general-requirements)
