@@ -73,7 +73,20 @@ environment                              = "dev"
 resource_group                           = "iac-example-rg"
 region                                   = "us-south"
 additional_zone_names                    = ["dal12", "dal13"]
+public_vlan_id                           = "123456"
+private_vlan_id                          = "234566"
+enable_public_service_endpoint           = "true"
+enable_private_service_endpoint          = "true"
+additional_zone_public_service_endpoint  = ["34567", "456767"]
+additional_zone_private_service_endpoint = ["567888", "677888"]
 ...
+```
+
+Use below command to get the value of VLAN variables public_vlan_id, private_vlan_id, additional_zone_public_service_endpoint and
+additional_zone_private_service_endpoint.
+
+```bash
+ibmcloud sl vlan list -d <zone_name>
 ```
 
 Execute below Terraform commands to provision the infrastructure:
@@ -127,8 +140,45 @@ sample file is available in **singlezone** directory.
           "value": "eu-de",
           "type": "string"
         },
+        {
+          "name": "public_vlan_id",
+          "value": "123456",
+          "type": "string"
+        },
+        {
+          "name": "private_vlan_id",
+          "value": "234566",
+          "type": "string"
+        },
+        {
+          "name": "enable_public_service_endpoint",
+          "value": "true",
+          "type": "string"
+        },
+        {
+          "name": "enable_private_service_endpoint",
+          "value": "true",
+          "type": "string"
+        },
+        {
+          "name": "additional_zone_public_service_endpoint",
+          "value": "[\"34567\", \"456767\"]",
+          "type": "list(string)"
+        },
+        {
+          "name": "additional_zone_private_service_endpoint",
+          "value": "[\"567888\", \"677888\"]",
+          "type": "list(string)"
+        },
 ...
 ```      
+
+Use below command to get the value of VLAN variables public_vlan_id, private_vlan_id, additional_zone_public_service_endpoint and
+additional_zone_private_service_endpoint.
+
+```bash
+ibmcloud sl vlan list -d <zone_name>
+```
 
 Execute the below Schematics commands:
 
