@@ -34,7 +34,7 @@
         },
         {
           "name": "region",
-          "value": "eu-de",
+          "value": "us-south",
           "type": "string"
         },
         {
