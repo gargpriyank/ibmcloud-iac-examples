@@ -64,12 +64,12 @@
         },
         {
           "name": "public_vlan_id",
-          "value": "2953606",
+          "value": "123456",
           "type": "string"
         },
         {
           "name": "private_vlan_id",
-          "value": "2953608",
+          "value": "234566",
           "type": "string"
         },
         {
@@ -83,13 +83,13 @@
           "type": "string"
         },
         {
-          "name": "add_zone_enable_public_service_endpoint",
-          "value": "[\"true\", \"true\"]",
+          "name": "additional_zone_public_service_endpoint",
+          "value": "[\"34567\", \"456767\"]",
           "type": "list(string)"
         },
         {
-          "name": "add_zone_enable_private_service_endpoint",
-          "value": "[\"true\", \"true\"]",
+          "name": "additional_zone_private_service_endpoint",
+          "value": "[\"567888\", \"677888\"]",
           "type": "list(string)"
         },
         {

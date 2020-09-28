@@ -45,11 +45,11 @@ variable "enable_private_service_endpoint" {
   type    = string
 }
 
-variable "add_zone_enable_public_service_endpoint" {
+variable "additional_zone_public_service_endpoint" {
   type    = list(string)
 }
 
-variable "add_zone_enable_private_service_endpoint" {
+variable "additional_zone_private_service_endpoint" {
   type    = list(string)
 }
 

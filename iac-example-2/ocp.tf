@@ -26,7 +26,7 @@ resource "ibm_container_worker_pool_zone_attachment" "iac_iks_cluster_pool" {
   cluster           = ibm_container_cluster.iac_iks_cluster.id
   worker_pool       = ibm_container_cluster.iac_iks_cluster.worker_pools.0.id
   zone              = var.additional_zone_names[count.index]
-  private_vlan_id   = var.add_zone_enable_private_service_endpoint[count.index]
-  public_vlan_id    = var.add_zone_enable_public_service_endpoint[count.index]
+  private_vlan_id   = var.additional_zone_private_service_endpoint[count.index]
+  public_vlan_id    = var.additional_zone_public_service_endpoint[count.index]
   resource_group_id = data.ibm_resource_group.group.id
 }
