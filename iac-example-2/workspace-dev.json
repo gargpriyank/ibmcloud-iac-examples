@@ -139,7 +139,7 @@
         },
         {
           "name": "enable_event_streams_service",
-          "value": "false",
+          "value": "true",
           "type": "bool"
         },
         {
