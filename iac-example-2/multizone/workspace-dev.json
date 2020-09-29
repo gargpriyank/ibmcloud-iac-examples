@@ -194,12 +194,12 @@
         },
         {
           "name": "bm_package_key_name",
-          "value": "1U_1270_V6_2X2TB_NORAID",
+          "value": "SINGLE_E31270_V6",
           "type": "string"
         },
         {
           "name": "bm_process_key_name",
-          "value": "1U_1270_V6_2X2TB_NORAID",
+          "value": "INTEL_INTEL_XEON_E31270_V6_3_80",
           "type": "string"
         },
         {
@@ -209,7 +209,7 @@
         },
         {
           "name": "bm_os_key_name",
-          "value": "UBUNTU_18_64",
+          "value": "OS_UBUNTU_18_04_LTS_BIONIC_BEAVER_MINIMAL",
           "type": "string"
         },
         {
@@ -229,7 +229,7 @@
         },
         {
           "name": "bm_disk_key_names",
-          "value": "[\"HARD_DRIVE_1TB_HDD\", \"HARD_DRIVE_1TB_HDD\", \"HARD_DRIVE_1TB_HDD\"]",
+          "value": "[\"HARD_DRIVE_1_00_TB_SATA_2\"]",
           "type": "string"
         },
         {
