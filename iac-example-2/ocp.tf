@@ -21,10 +21,20 @@ resource "ibm_container_cluster" "iac_iks_cluster" {
   resource_group_id        = data.ibm_resource_group.group.id
 }
 
-resource "ibm_container_worker_pool_zone_attachment" "iac_iks_cluster_pool" {
+resource "ibm_container_worker_pool" "iac_iks_cluster_pool" {
+  count             = local.max_size
+  worker_pool_name  = "${var.project_name}-${var.environment}-wp-${format("%02s", count.index)}"
+  machine_type      = var.machine_type
+  cluster           = ibm_container_cluster.iac_iks_cluster.id
+  size_per_zone     = var.workers_count
+  hardware          = var.hardware
+  resource_group_id = data.ibm_resource_group.group.id
+}
+
+resource "ibm_container_worker_pool_zone_attachment" "iac_iks_cluster_pool_attachment" {
   count             = local.max_size
   cluster           = ibm_container_cluster.iac_iks_cluster.id
-  worker_pool       = ibm_container_cluster.iac_iks_cluster.worker_pools.0.id
+  worker_pool       = element(split("/", ibm_container_worker_pool.workerpool.id), 1)
   zone              = var.additional_zone_names[count.index]
   private_vlan_id   = var.additional_zone_private_service_endpoint[count.index]
   public_vlan_id    = var.additional_zone_public_service_endpoint[count.index]
