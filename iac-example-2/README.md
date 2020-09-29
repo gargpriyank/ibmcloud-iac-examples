@@ -57,7 +57,7 @@ export IC_API_KEY=$(grep '"apikey":' ~/ibm_api_key.json | sed 's/.*: "\(.*\)".*/
 
 ## How to use with Terraform
 
-A sample `terraform.tfvars` file is provided with this example. This file creates resources in Frankfurt region in multi-zone. A single zone
+A sample `terraform.tfvars` file is provided with this example. This file creates resources in Dallas region in multi-zone. A single zone
 sample file is available in **singlezone** directory.
 
 > **Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `terraform.tfvars` file in any
@@ -103,7 +103,7 @@ terraform destroy
 
 Schematics delivers Terraform as a Service. 
 
-A sample `workspace-dev.json` file is provided with this example. This file creates resources in Frankfurt region in multi-zone. A single zone
+A sample `workspace-dev.json` file is provided with this example. This file creates resources in Dallas region in multi-zone. A single zone
 sample file is available in **singlezone** directory.
 
 > **Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `workspace-dev.json` file in
@@ -133,7 +133,7 @@ sample file is available in **singlezone** directory.
         },
         {
           "name": "region",
-          "value": "eu-de",
+          "value": "us-south",
           "type": "string"
         },
         {
@@ -215,14 +215,14 @@ Execute the following commands to create the registry namespace.
 
 ```bash
 ibmcloud login -a https://cloud.ibm.com     # Login to IBM cloud account. In case of single sign on, use --sso.
-ibmcloud cr region-set eu-central   # Set the registry region. For an example, eu-central (Frankfort) region is set here.
+ibmcloud cr region-set us-south   # Set the registry region. For an example, us-south (Dallas) region is set here.
 ibmcloud cr namespace-add iac-example-ns    # Create namespace. For an example, iac-example-ns namespace is created here.
 ```
 
-Following is an example of `hello-world` application image deployed in `iac-example-ns` namespace in Frankfort region.
+Following is an example of `hello-world` application image deployed in `iac-example-ns` namespace in Dallas region.
 
 ```bash
-de.icr.io/iac-example-ns/hello_world_repo:1.0   # de.icr.io is the Registry URL, hello_world_repo is the image repository, 1.0 is image version.
+us.icr.io/iac-example-ns/hello_world_repo:1.0   # us.icr.io is the Registry URL, hello_world_repo is the image repository, 1.0 is image version.
 ```
 
 ## Project Validation
