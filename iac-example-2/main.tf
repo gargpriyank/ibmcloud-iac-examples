@@ -1,5 +1,4 @@
 variable "iaas_classic_username" {
-  type = "string"
 }
 variable "iaas_classic_api_key" {
   type = "string"
