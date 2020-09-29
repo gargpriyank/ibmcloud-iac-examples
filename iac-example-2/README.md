@@ -78,8 +78,8 @@ additional_zone_private_service_endpoint = ["567888", "677888"]
 ...
 ```
 
-Use below command to get the value of VLAN variables public_vlan_id, private_vlan_id, additional_zone_public_service_endpoint and
-additional_zone_private_service_endpoint.
+Set the api key variables **iaas_classic_username** and **iaas_classic_api_key**. Use below command to get the value of VLAN variables
+**public_vlan_id, private_vlan_id, additional_zone_public_service_endpoint and additional_zone_private_service_endpoint**.
 
 ```bash
 ibmcloud sl vlan list -d <zone_name>
@@ -169,8 +169,8 @@ sample file is available in **singlezone** directory.
 ...
 ```      
 
-Use below command to get the value of VLAN variables public_vlan_id, private_vlan_id, additional_zone_public_service_endpoint and
-additional_zone_private_service_endpoint.
+Set the api key variables **iaas_classic_username** and **iaas_classic_api_key**. Use below command to get the value of VLAN variables
+**public_vlan_id, private_vlan_id, additional_zone_public_service_endpoint and additional_zone_private_service_endpoint**.
 
 ```bash
 ibmcloud sl vlan list -d <zone_name>
