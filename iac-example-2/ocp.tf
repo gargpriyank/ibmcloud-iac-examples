@@ -34,7 +34,7 @@ resource "ibm_container_worker_pool" "iac_iks_cluster_pool" {
 resource "ibm_container_worker_pool_zone_attachment" "iac_iks_cluster_pool_attachment" {
   count             = local.max_size
   cluster           = ibm_container_cluster.iac_iks_cluster.id
-  worker_pool       = ibm_container_worker_pool.iac_iks_cluster_pool[count.index].id
+  worker_pool       = element(split("/", ibm_container_worker_pool.iac_iks_cluster_pool[count.index].id), 1)
   zone              = var.additional_zone_names[count.index]
   private_vlan_id   = var.additional_zone_private_service_endpoint[count.index]
   public_vlan_id    = var.additional_zone_public_service_endpoint[count.index]
