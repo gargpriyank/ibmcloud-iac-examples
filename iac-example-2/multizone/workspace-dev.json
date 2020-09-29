@@ -34,7 +34,7 @@
         },
         {
           "name": "region",
-          "value": "eu-de",
+          "value": "us-south",
           "type": "string"
         },
         {
@@ -49,7 +49,7 @@
         },
         {
           "name": "additional_zone_names",
-          "value": "[]",
+          "value": "[\"dal12\", \"dal13\"]",
           "type": "string"
         },
         {
@@ -59,7 +59,7 @@
         },
         {
           "name": "workers_count",
-          "value": "2",
+          "value": "1",
           "type": "number"
         },
         {
@@ -180,6 +180,71 @@
         {
           "name": "es_kafka_topic_segment_bytes",
           "value": "536870912",
+          "type": "number"
+        },
+        {
+          "name": "bm_hostname",
+          "value": "iac-example-dev-bm",
+          "type": "string"
+        },
+        {
+          "name": "bm_domain",
+          "value": "example.com",
+          "type": "string"
+        },
+        {
+          "name": "bm_package_key_name",
+          "value": "1U_1270_V6_2X2TB_NORAID",
+          "type": "string"
+        },
+        {
+          "name": "bm_process_key_name",
+          "value": "1U_1270_V6_2X2TB_NORAID",
+          "type": "string"
+        },
+        {
+          "name": "bm_memory",
+          "value": "64",
+          "type": "number"
+        },
+        {
+          "name": "bm_os_key_name",
+          "value": "UBUNTU_18_64",
+          "type": "string"
+        },
+        {
+          "name": "bm_datacenter",
+          "value": "dal10",
+          "type": "string"
+        },
+        {
+          "name": "bm_network_speed",
+          "value": "1000",
+          "type": "number"
+        },
+        {
+          "name": "bm_public_bandwidth",
+          "value": "500",
+          "type": "number"
+        },
+        {
+          "name": "bm_disk_key_names",
+          "value": "[\"HARD_DRIVE_1TB_HDD\", \"HARD_DRIVE_1TB_HDD\", \"HARD_DRIVE_1TB_HDD\"]",
+          "type": "string"
+        },
+        {
+          "name": "bm_hourly_billing",
+          "value": "false",
+          "type": "bool"
+        },
+        {
+          "name": "bm_public_vlan_id",
+          "value": "123456",
+          "type": "number"
+        },
+        {
+          "name": "bm_private_vlan_id",
+          "value": "234566",
           "type": "number"
         }
       ]

@@ -125,6 +125,58 @@ variable "es_kafka_topic_segment_bytes" {
   type    = number
 }
 
+variable "bm_domain" {
+  type    = string
+}
+
+variable "bm_hostname" {
+  type    = string
+}
+
+variable "bm_package_key_name" {
+  type    = string
+}
+
+variable "bm_process_key_name" {
+  type    = string
+}
+
+variable "bm_memory" {
+  type    = number
+}
+
+variable "bm_os_key_name" {
+  type    = string
+}
+
+variable "bm_datacenter" {
+  type    = string
+}
+
+variable "bm_network_speed" {
+  type    = number
+}
+
+variable "bm_public_bandwidth" {
+  type    = number
+}
+
+variable "bm_disk_key_names" {
+  type    = list(string)
+}
+
+variable "bm_hourly_billing" {
+  type    = bool
+}
+
+variable "bm_public_vlan_id" {
+  type    = number
+}
+
+variable "bm_private_vlan_id" {
+  type    = number
+}
+
 locals {
   max_size = length(var.additional_zone_names)
 }

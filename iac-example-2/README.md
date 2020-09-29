@@ -1,7 +1,8 @@
 # Infrastructure as Code example 2
 
 This directory contains the terraform code to provision Red Hat OpenShift Classic, IBM Databases for MongoDB  (configurable to any other IBM
-database service) and IBM Event Streams (Kafka). This code provides the flexibility to keep IBM Databases for MongoDB (enable_db_service) 
+database service), IBM Event Streams (Kafka) and Bare Metal Server. This code provides the flexibility to keep IBM Databases for MongoDB
+ (enable_db_service) 
 and IBM Event Streams (enable_event_streams_service) optional and can be set as false to not to provision it.
 
 - [General Requirements](#general-requirements)
@@ -57,8 +58,8 @@ export IC_API_KEY=$(grep '"apikey":' ~/ibm_api_key.json | sed 's/.*: "\(.*\)".*/
 
 ## How to use with Terraform
 
-A sample `terraform.tfvars` file is provided with this example. This file creates resources in Dallas region in multi-zone. A single zone
-sample file is available in **singlezone** directory.
+A sample `terraform.tfvars` file is provided with this example. This file creates resources in Dallas region in single zone. A multi-zone
+sample file is available in **multizone** directory.
 
 > **Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `terraform.tfvars` file in any
 > repository since it may contain sensitive information like password.**
@@ -68,13 +69,13 @@ project_name                             = "iac-example"
 environment                              = "dev"
 resource_group                           = "iac-example-rg"
 region                                   = "us-south"
-additional_zone_names                    = ["dal12", "dal13"]
+additional_zone_names                    = []
 public_vlan_id                           = "123456"
 private_vlan_id                          = "234566"
 enable_public_service_endpoint           = "true"
 enable_private_service_endpoint          = "true"
-additional_zone_public_service_endpoint  = ["34567", "456767"]
-additional_zone_private_service_endpoint = ["567888", "677888"]
+additional_zone_public_service_endpoint  = []
+additional_zone_private_service_endpoint = []
 ...
 ```
 
@@ -103,8 +104,8 @@ terraform destroy
 
 Schematics delivers Terraform as a Service. 
 
-A sample `workspace-dev.json` file is provided with this example. This file creates resources in Dallas region in multi-zone. A single zone
-sample file is available in **singlezone** directory.
+A sample `workspace-dev.json` file is provided with this example. This file creates resources in Dallas region in single zone. A multi-zone
+sample file is available in **multizone** directory.
 
 > **Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `workspace-dev.json` file in
 > any repository since it may contain sensitive information like password.**

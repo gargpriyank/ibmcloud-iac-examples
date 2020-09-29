@@ -44,12 +44,12 @@
         },
         {
           "name": "machine_type",
-          "value": "m3c.4x32",
+          "value": "b3c.8x32",
           "type": "string"
         },
         {
           "name": "additional_zone_names",
-          "value": "[\"dal12\", \"dal13\"]",
+          "value": "[]",
           "type": "string"
         },
         {
@@ -59,7 +59,7 @@
         },
         {
           "name": "workers_count",
-          "value": "1",
+          "value": "3",
           "type": "number"
         },
         {
@@ -84,17 +84,17 @@
         },
         {
           "name": "additional_zone_public_service_endpoint",
-          "value": "[\"34567\", \"456767\"]",
+          "value": "[]",
           "type": "list(string)"
         },
         {
           "name": "additional_zone_private_service_endpoint",
-          "value": "[\"567888\", \"677888\"]",
+          "value": "[]",
           "type": "list(string)"
         },
         {
           "name": "k8s_version",
-          "value": "4.4_openshift",
+          "value": "4.3_openshift",
           "type": "string"
         },
         {
@@ -180,6 +180,71 @@
         {
           "name": "es_kafka_topic_segment_bytes",
           "value": "536870912",
+          "type": "number"
+        },
+        {
+          "name": "bm_hostname",
+          "value": "iac-example-dev-bm",
+          "type": "string"
+        },
+        {
+          "name": "bm_domain",
+          "value": "example.com",
+          "type": "string"
+        },
+        {
+          "name": "bm_package_key_name",
+          "value": "1U_1270_V6_2X2TB_NORAID",
+          "type": "string"
+        },
+        {
+          "name": "bm_process_key_name",
+          "value": "1U_1270_V6_2X2TB_NORAID",
+          "type": "string"
+        },
+        {
+          "name": "bm_memory",
+          "value": "64",
+          "type": "number"
+        },
+        {
+          "name": "bm_os_key_name",
+          "value": "UBUNTU_18_64",
+          "type": "string"
+        },
+        {
+          "name": "bm_datacenter",
+          "value": "dal10",
+          "type": "string"
+        },
+        {
+          "name": "bm_network_speed",
+          "value": "1000",
+          "type": "number"
+        },
+        {
+          "name": "bm_public_bandwidth",
+          "value": "500",
+          "type": "number"
+        },
+        {
+          "name": "bm_disk_key_names",
+          "value": "[\"HARD_DRIVE_1TB_HDD\", \"HARD_DRIVE_1TB_HDD\", \"HARD_DRIVE_1TB_HDD\"]",
+          "type": "string"
+        },
+        {
+          "name": "bm_hourly_billing",
+          "value": "false",
+          "type": "bool"
+        },
+        {
+          "name": "bm_public_vlan_id",
+          "value": "123456",
+          "type": "number"
+        },
+        {
+          "name": "bm_private_vlan_id",
+          "value": "234566",
           "type": "number"
         }
       ]
