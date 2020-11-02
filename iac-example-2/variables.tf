@@ -134,7 +134,7 @@ variable "bm_os_key_name" {
 }
 
 variable "bm_datacenter" {
-  type    = string
+  type    = list(string)
 }
 
 variable "bm_network_speed" {
@@ -163,4 +163,5 @@ variable "bm_private_vlan_id" {
 
 locals {
   max_size = length(var.additional_zone_names)
+  max_size_bm = length(var.bm_datacenter)
 }
