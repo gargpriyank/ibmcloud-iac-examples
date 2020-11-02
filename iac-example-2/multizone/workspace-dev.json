@@ -104,7 +104,7 @@
         },
         {
           "name": "db_name",
-          "value": "iac-example-dev-mongodb",
+          "value": "iac-example-dev-cloudant",
           "type": "string"
         },
         {
@@ -114,27 +114,7 @@
         },
         {
           "name": "db_service_name",
-          "value": "databases-for-mongodb",
-          "type": "string"
-        },
-        {
-          "name": "db_admin_password",
-          "value": "insecurepassword",
-          "type": "string"
-        },
-        {
-          "name": "db_memory_allocation",
-          "value": "3072",
-          "type": "number"
-        },
-        {
-          "name": "db_disk_allocation",
-          "value": "61440",
-          "type": "number"
-        },
-        {
-          "name": "db_whitelist_ip_address",
-          "value": "0.0.0.0/0",
+          "value": "cloudantnosqldb",
           "type": "string"
         },
         {

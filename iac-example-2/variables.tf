@@ -73,22 +73,6 @@ variable "db_service_name" {
   type    = string
 }
 
-variable "db_admin_password" {
-  type    = string
-}
-
-variable "db_memory_allocation" {
-  type    = number
-}
-
-variable "db_disk_allocation" {
-  type    = number
-}
-
-variable "db_whitelist_ip_address" {
-  type    = string
-}
-
 variable "es_kafka_service_name" {
   type    = string
 }
