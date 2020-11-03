@@ -194,7 +194,7 @@
         },
         {
           "name": "bm_datacenter",
-          "value": "[\"dal10\", \"dal12\"]",
+          "value": "[\"dal10\"]",
           "type": "string"
         },
         {
