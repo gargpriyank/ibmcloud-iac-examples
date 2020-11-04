@@ -229,7 +229,7 @@
         },
         {
           "name": "vs_hostname",
-          "value": "sadnbox-edge-example-dev-vs",
+          "value": "iac-example-dev-vs",
           "type": "string"
         },
         {
