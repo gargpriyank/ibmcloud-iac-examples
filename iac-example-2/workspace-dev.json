@@ -50,7 +50,7 @@
         {
           "name": "additional_zone_names",
           "value": "[]",
-          "type": "string"
+          "type": "list(string)"
         },
         {
           "name": "hardware",
@@ -195,7 +195,7 @@
         {
           "name": "bm_datacenter",
           "value": "[\"dal10\"]",
-          "type": "string"
+          "type": "list(string)"
         },
         {
           "name": "bm_network_speed",
@@ -210,7 +210,7 @@
         {
           "name": "bm_disk_key_names",
           "value": "[\"HARD_DRIVE_1_00_TB_SATA_2\"]",
-          "type": "string"
+          "type": "list(string)"
         },
         {
           "name": "bm_hourly_billing",
@@ -226,6 +226,21 @@
           "name": "bm_private_vlan_id",
           "value": "234566",
           "type": "number"
+        },
+        {
+          "name": "vs_hostname",
+          "value": "sadnbox-edge-example-dev-vs",
+          "type": "string"
+        },
+        {
+          "name": "vs_flavor_key_name",
+          "value": "b1.32x64",
+          "type": "string"
+        },
+        {
+          "name": "vs_datacenter",
+          "value": "[\"dal10\"]",
+          "type": "list(string)"
         }
       ]
     }

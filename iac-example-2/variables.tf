@@ -161,7 +161,20 @@ variable "bm_private_vlan_id" {
   type    = number
 }
 
+variable "vs_hostname" {
+  type    = string
+}
+
+variable "vs_flavor_key_name" {
+  type    = string
+}
+
+variable "vs_datacenter" {
+  type    = list(string)
+}
+
 locals {
   max_size = length(var.additional_zone_names)
   max_size_bm = length(var.bm_datacenter)
+  max_size_vs = length(var.vs_datacenter)
 }

@@ -40,3 +40,6 @@ bm_disk_key_names                        = ["HARD_DRIVE_1_00_TB_SATA_2"]
 bm_hourly_billing                        = false
 bm_public_vlan_id                        = 123456
 bm_private_vlan_id                       = 234566
+vs_hostname                              = "sadnbox-edge-example-dev-vs"
+vs_flavor_key_name                       = "b1.32x64"
+vs_datacenter                            = ["dal10", "dal12"]
