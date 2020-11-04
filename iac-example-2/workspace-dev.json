@@ -94,7 +94,7 @@
         },
         {
           "name": "k8s_version",
-          "value": "4.3_openshift",
+          "value": "4.4_openshift",
           "type": "string"
         },
         {
