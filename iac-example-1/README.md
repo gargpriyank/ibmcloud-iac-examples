@@ -11,224 +11,212 @@ This code provides the flexibility to use custom CIDR for address prefix (enable
 (enable_public_gateway), VPN Gateway (enable_vpn), IBM Databases for MongoDB (enable_db_service) and IBM Event Streams
 (enable_event_streams_service) are optional and can be set as false to not to provision it.
 
-- [General Requirements](#general-requirements)
-- [How to use with Terraform](#how-to-use-with-terraform)
-- [How to use with Schematics](#how-to-use-with-schematics)
-- [How to use IBM Cloud Registry](#how-to-use-ibm-cloud-registry)
-- [Project Validation](#project-validation)
+## Navigation
 
-## General Requirements
+- [Prerequisites](#prerequisites)
+- [Initialize](#initialize)
+- [Using Terraform](#using-terraform)
+  <br> or,
+- (Recommended) [Using Schematics](#using-schematics)
+- [Validation](#validation)
 
-Same for every pattern, the requirements are documented in the 
-[Environment Setup](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment). It includes:
+## Prerequisites
+
+The requirements are documented in the
+[Environment Setup](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md). It includes:
 
 - Have an IBM Cloud account with required privileges
-- [Install IBM Cloud CLI](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#install-ibm-cloud-cli)
-- [Install the IBM Cloud CLI Plugins](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#ibm-cloud-cli-plugins) 
+- [Install IBM Cloud CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#install-ibm-cloud-cli)
+- [Install the IBM Cloud CLI Plugins](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#ibm-cloud-cli-plugins)
   `infrastructure-service`, `schematics` and `container-registry`.
-- [Login to IBM Cloud with the CLI](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#login-to-ibm-cloud)
-- [Install Terraform](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#install-terraform)
-- [Configure access to IBM Cloud](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud) for
+- [Log in to IBM Cloud with the CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#login-to-ibm-cloud)
+- [Install Terraform](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#install-terraform)
+- [Configure access to IBM Cloud](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#configure-access-to-ibm-cloud) for
   Terraform and the IBM Cloud CLI
-- [Install IBM Cloud Terraform Provider](https://ibm.github.io/cloud-enterprise-examples/iac/setup-environment#configure-access-to-ibm-cloud)
-- (Optional) Install some utility tools such as: [jq](https://stedolan.github.io/jq/download/) 
-  and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-- (Optional) Install OpenShift CLI (OC) from OpenShift console by clicking ? button on the top right corner and selecting Command Line Tools option.
+- [Install IBM Cloud Terraform Provider](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#configure-access-to-ibm-cloud)
+- Install the following tools:
+  - [IBM Cloud Pak CLI (cloudctl) and OpenShift client CLI (oc)](https://www.ibm.com/support/knowledgecenter/SSFKVV_4.2/cli/cloudctl_oc_cli.html)
+  - [docker](https://www.ibm.com/links?url=https%3A%2F%2Fdocs.docker.com%2Fget-docker%2F)
 
-> For OpenShift clusters on VPC Gen 2, the IBM Cloud Terraform provider must be version 1.8.0 or later. This example is using Terraform version
-> 0.12.0.
+> The IBM Cloud Terraform provider must be version 1.8.0 or later. This example is using Terraform version 0.12.0.
 
-Executing these commands you are validating part of these requirements:
+## Initialize
 
-```bash
-ibmcloud --version
-ibmcloud plugin show infrastructure-service | head -3
-ibmcloud plugin show schematics | head -3
-ibmcloud target
-terraform version
-ls ~/.terraform.d/plugins/terraform-provider-ibm_*
-echo $IC_API_KEY
-```
+1. Create `workspace` directory in your local linux/mac box. Download **iac-example-1** project code.
 
-If you have an API Key but is not set, neither have the JSON file when it was created, you must recreate the key. Delete the old one if won't be in
-use anymore.
+    ```markdown
+    mkdir <your_home_dir>/workspace
+    cd <your_home_dir>/workspace
+    git clone https://github.com/gargpriyank/ibmcloud-iac-examples.git
+    cd ibmcloud-iac-examples/iac-example-1
+    ```
 
-```bash
-# Delete the old one, if won't be in use anymore
-ibmcloud iam api-keys       # Identify your old API Key Name
-ibmcloud iam api-key-delete NAME
+2. Execute the commands in below to validate the ibm cloud, terraform and schematics CLI version.
 
-# Create a new one and set it as environment variable
-ibmcloud iam api-key-create TerraformKey -d "API Key for Terraform" --file ~/ibm_api_key.json
-export IC_API_KEY=$(grep '"apikey":' ~/ibm_api_key.json | sed 's/.*: "\(.*\)".*/\1/')
-```
+    ```markdown
+    ibmcloud --version
+    ibmcloud plugin show infrastructure-service | head -3
+    ibmcloud plugin show schematics | head -3
+    ibmcloud target
+    terraform version
+    ls ~/.terraform.d/plugins/terraform-provider-ibm_*
+    echo $IC_API_KEY
+    ```
 
-## How to use with Terraform
+3. Create the IBM Cloud API Key as in below.
 
-A sample `terraform.tfvars` file is provided with this example. This file creates resources in Frankfurt region in multi-zone. A single zone
-sample file is available in **singlezone** directory.
+    ```markdown
+    # Create a new one and export it as environment variable
+    ibmcloud iam api-key-create TerraformKey -d "API Key for Terraform" --file ~/ibm_api_key.json
+    export IC_API_KEY=$(grep '"apikey":' ~/ibm_api_key.json | sed 's/.*: "\(.*\)".*/\1/')
+    ```
 
-> **Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `terraform.tfvars` file in any
-> repository since it may contain sensitive information like password.**
+## Using Terraform
 
-```hcl-terraform
-project_name                   = "iac-example"
-environment                    = "dev"
-resource_group                 = "iac-example-dev-rg"
-region                         = "eu-de"
-vpc_zone_names                 = ["eu-de-1", "eu-de-2"]
-flavors                        = ["mx2.4x32", "mx2.4x32"]
-workers_count                  = [2, 1]
-...
-```
+1. A sample `terraform.tfvars` file is provided with this example. This file creates resources in Dallas region in single zone. A multi-zone
+   sample file is available in **multizone** directory.
 
-Execute below Terraform commands to provision the infrastructure:
+   > Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `terraform.tfvars` file
+   > since it may contain sensitive information like password.**
 
-```bash
-terraform init
-terraform plan
-terraform apply
-```
+    ```markdown
+    project_name                   = "iac-example"
+    environment                    = "dev"
+    resource_group                 = "iac-example-dev-rg"
+    region                         = "eu-de"
+    vpc_zone_names                 = ["eu-de-1", "eu-de-2"]
+    flavors                        = ["mx2.4x32", "mx2.4x32"]
+    workers_count                  = [2, 1]
+    ...
+    ```
 
-Optional: In case you want to clean up the infrastructure, execute below Terraform command: 
+2. Set the api key variables **iaas_classic_username** and **iaas_classic_api_key**. Use below command to get the value of VLAN variables
+   **public_vlan_id**, **private_vlan_id**, **additional_zone_public_service_endpoint** and **additional_zone_private_service_endpoint**.
 
-```bash
-terraform destroy
-```
+    ```markdown
+    ibmcloud sl vlan list -d <zone_name>
+    ```
 
-## How to use with Schematics
+3. Execute below Terraform commands to provision the infrastructure.
 
-Schematics delivers Terraform as a Service. 
+    ```markdown
+    terraform init  # Initialize the terraform working directory.
+    terraform plan  # Create the terraform execution plan.
+    terraform apply  # Apply the terraform plan to reach to the desired state.
+    ```
 
-A sample `workspace-dev.json` file is provided with this example. This file creates resources in Frankfurt region in multi-zone. A single zone
-sample file is available in **singlezone** directory.
+4. Optional: In case you want to clean up the infrastructure, execute below Terraform command.
 
-> **Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `workspace-dev.json` file in
-> any repository since it may contain sensitive information like password.**
+    ```markdown
+    terraform destroy  # Destroy the infrastructure produced by terraform.
+    ```
 
-```json
-...
-"template_data": [{
-    "folder": ".",
-    "type": "terraform_v0.12",
-    "variablestore": [{
-      "name": "project_name",
-      "value": "iac-example",
-      "type": "string"
-    },
-      {
-        "name": "environment",
-        "value": "dev",
-        "type": "string"
-      },
-      {
-        "name": "resource_group",
-        "value": "iac-example-rg",
-        "type": "string"
-      },
-      {
-        "name": "region",
-        "value": "eu-de",
-        "type": "string"
-      },
-      {
-        "name": "vpc_zone_names",
-        "value": "[\"eu-de-1\", \"eu-de-2\"]",
-        "type": "list(string)"
-      },
-      {
-        "name": "flavors",
-        "value": "[\"mx2.4x32\", \"mx2.4x32\"]",
-        "type": "list(string)"
-      },
-...
-```      
+## Using Schematics
 
-Execute the below Schematics commands:
+Schematics delivers the Terraform as a Service. Below are the steps to create and run schematics workspace to provision cloud resources.
 
-```bash
-# Create workspace:
-ibmcloud schematics workspace list
-ibmcloud schematics workspace new --file workspace-dev.json #Create dev environment workspace.
-ibmcloud schematics workspace list          # Identify the WORKSPACE_ID
+1. A sample `workspace-workshop.json` file is provided with this example. This file creates resources in Dallas region in single zone. A multi-zone
+   sample file is available in **multizone** directory.
 
-# Create plan: 
-ibmcloud schematics plan --id $WORKSPACE_ID  # Identify the Activity_ID
-ibmcloud schematics logs --id $WORKSPACE_ID --act-id Activity_ID
+   > Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `workspace-workshop.json` file
+   > since it may contain sensitive information like password.**
 
-# Apply plan:
-ibmcloud schematics apply --id $WORKSPACE_ID # Identify the Activity_ID
-ibmcloud schematics logs  --id $WORKSPACE_ID --act-id Activity_ID
-```
+    ```markdown
+    ...
+    "template_data": [{
+        "folder": ".",
+        "type": "terraform_v0.12",
+        "variablestore": [{
+          "name": "project_name",
+          "value": "iac-example",
+          "type": "string"
+        },
+          {
+            "name": "environment",
+            "value": "dev",
+            "type": "string"
+          },
+          {
+            "name": "resource_group",
+            "value": "iac-example-rg",
+            "type": "string"
+          },
+          {
+            "name": "region",
+            "value": "eu-de",
+            "type": "string"
+          },
+          {
+            "name": "vpc_zone_names",
+            "value": "[\"eu-de-1\", \"eu-de-2\"]",
+            "type": "list(string)"
+          },
+          {
+            "name": "flavors",
+            "value": "[\"mx2.4x32\", \"mx2.4x32\"]",
+            "type": "list(string)"
+          },
+    ...
+    ```      
 
-Optional: In case you want to clean up the infrastructure, execute below Schematics command:
+2. Set the api key variables **iaas_classic_username** and **iaas_classic_api_key**. Use below command to get the value of VLAN variables
+   **public_vlan_id**, **private_vlan_id**, **additional_zone_public_service_endpoint** and **additional_zone_private_service_endpoint**.
 
-```bash
+    ```markdown
+    ibmcloud sl vlan list -d <zone_name>
+    ```
 
-ibmcloud schematics destroy --id $WORKSPACE_ID # Identify the Activity_ID
-ibmcloud schematics logs  --id $WORKSPACE_ID --act-id Activity_ID
+3. Execute the below Schematics commands to create the plan and execute it. Set the api key variable `ibmcloud_api_key` before creating the plan.
 
-ibmcloud schematics workspace delete --id $WORKSPACE_ID
-ibmcloud schematics workspace list
-```
-## How to use IBM Cloud Registry
+    ```markdown
+    # Create workspace:
+    ibmcloud schematics workspace list
+    ibmcloud schematics workspace new --file workspace-workshop.json  # Create the new workspace.
+    ibmcloud schematics workspace list  # List all the workspaces.
+    
+    # Create plan: 
+    ibmcloud schematics plan --id $WORKSPACE_ID  # Create the schematics plan.
+    ibmcloud schematics logs --id $WORKSPACE_ID --act-id Activity_ID
+    
+    # Apply plan:
+    ibmcloud schematics apply --id $WORKSPACE_ID  # Apply the schematics plan to reach to the desired state.
+    ibmcloud schematics logs  --id $WORKSPACE_ID --act-id Activity_ID
+    ```
 
-Install the Container Registry plug-in if not installed.
+4. Optional: Execute below Schematics command to destroy the infrastructure.
 
-```bash
-ibmcloud plugin install -f -r "IBM Cloud" container-registry
-```
+    ```markdown
+    ibmcloud schematics destroy --id $WORKSPACE_ID  # Destroy the cloud resources associated to the workspace.
+    ibmcloud schematics logs  --id $WORKSPACE_ID --act-id Activity_ID
+    
+    ibmcloud schematics workspace delete --id $WORKSPACE_ID  # Delete the schematics workspace.
+    ibmcloud schematics workspace list
+    ```
 
-Execute the following commands to create the registry namespace.
+## Validation
 
-```bash
-ibmcloud login -a https://cloud.ibm.com     # Login to IBM cloud account. In case of single sign on, use --sso.
-ibmcloud cr region-set eu-central   # Set the registry region. For an example, eu-central (Frankfort) region is set here.
-ibmcloud cr namespace-add iac-example-ns    # Create namespace. For an example, iac-example-ns namespace is created here.
-```
+After the infrastructure is provisioned, validate it using one of the Terraform or Schematics commands.
 
-Following is an example of `hello-world` application image deployed in `iac-example-ns` namespace in Frankfort region.
+1. Execute the below commands to get the Terraform output and cluster info.
 
-```bash
-de.icr.io/iac-example-ns/hello_world_repo:1.0   # de.icr.io is the Registry URL, hello_world_repo is the image repository, 1.0 is image version.
-```
+    ```markdown
+    terraform output
+    ibmcloud ks cluster config --cluster $(terraform output cluster_id)
+    ```
 
-## Project Validation
+2. Execute the below commands to get the Schematics output and cluster info.
 
-To have access to the IKS cluster execute this **IBM Cloud CLI** command (`NAME` is the cluster name):
+    ```markdown
+    ibmcloud schematics workspace list          # Identify the WORKSPACE_ID
+    ibmcloud schematics workspace output --id $WORKSPACE_ID --json
+    
+    ibmcloud ks cluster config --cluster $(ibmcloud schematics output --id $WORKSPACE_ID --json | jq -r '.[].output_values[].cluster_id.value')
+    ```
 
-```bash
-ibmcloud ks cluster config --cluster $NAME
-```
+3. Use below `oc` commands to verify the cluster, node and pods info.
 
-If the project was executed with **Terraform**, get the outputs and kubectl configured executing these commands:
-
-```bash
-terraform output
-ibmcloud ks cluster config --cluster $(terraform output cluster_id)
-```
-
-If the project was executed with **IBM Cloud Schematics**, get the outputs and kubectl configured executing these commands:
-
-```bash
-ibmcloud schematics workspace list          # Identify the WORKSPACE_ID
-ibmcloud schematics workspace output --id $WORKSPACE_ID --json
-
-ibmcloud ks cluster config --cluster $(ibmcloud schematics output --id $WORKSPACE_ID --json | jq -r '.[].output_values[].cluster_id.value')
-```
-
-Some `kubectl` commands to verify you have access are:
-
-```bash
-kubectl cluster-info
-kubectl get nodes
-kubectl get pods -A
-```
-
-Some `oc` commands to verify you have access are:
-
-```bash
-oc cluster-info
-oc get nodes
-oc get pods -A
-```
+    ```markdown
+    oc cluster-info
+    oc get nodes
+    oc get pods -A
+    ```
