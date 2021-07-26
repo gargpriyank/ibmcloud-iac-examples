@@ -4,7 +4,7 @@ This directory contains the terraform code to provision IBM cloud VPC infrastruc
 Gateway to connect to other VPC network or on-premise network, IBM Databases for MongoDB (configurable to any other IBM database service) and IBM
 Event Streams (Kafka).
 
-![Network Architecture](https://github.com/gargpriyank/ibmcloud-examples/blob/master/iac-example-1/images/Network_Architecture.png)
+![Network Architecture](https://github.com/gargpriyank/ibmcloud-examples/blob/master/roks-vpc/images/Network_Architecture.png)
 
 This code provides the flexibility to use custom CIDR for address prefix (enable_custom_address_prefix) and subnets
 (enable_custom_subnet). If custom flag is set to false, it will create an address prefix and subnets using 10.0.*.0. Public Gateway
@@ -42,13 +42,13 @@ The requirements are documented in the
 
 ## Initialize
 
-1. Create `workspace` directory in your local linux/mac box. Download **iac-example-1** project code.
+1. Create `workspace` directory in your local linux/mac box. Download **roks-vpc** project code.
 
     ```markdown
     mkdir <your_home_dir>/workspace
     cd <your_home_dir>/workspace
     git clone https://github.com/gargpriyank/ibmcloud-iac-examples.git
-    cd ibmcloud-iac-examples/iac-example-1
+    cd ibmcloud-iac-examples/roks-vpc
     ```
 
 2. Execute the commands in below to validate the ibm cloud, terraform and schematics CLI version.

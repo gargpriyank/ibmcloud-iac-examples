@@ -35,13 +35,13 @@ The requirements are documented in the
 
 ## Initialize
 
-1. Create `workspace` directory in your local linux/mac box. Download **iac-example-2** project code.
+1. Create `workspace` directory in your local linux/mac box. Download **roks-classic** project code.
 
     ```markdown
     mkdir <your_home_dir>/workspace
     cd <your_home_dir>/workspace
     git clone https://github.com/gargpriyank/ibmcloud-iac-examples.git
-    cd ibmcloud-iac-examples/iac-example-2
+    cd ibmcloud-iac-examples/roks-classic
     ```
 
 2. Execute the commands in below to validate the ibm cloud, terraform and schematics CLI version.
