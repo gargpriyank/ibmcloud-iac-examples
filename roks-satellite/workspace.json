@@ -15,7 +15,7 @@
   "template_data": [
     {
       "folder": ".",
-      "type": "terraform_v1.0.3",
+      "type": "terraform_v1.0.*",
       "variablestore": [
         {
           "name": "project_name",

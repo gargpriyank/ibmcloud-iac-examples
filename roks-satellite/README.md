@@ -99,7 +99,7 @@ Schematics delivers the Terraform as a Service. Below are the steps to create an
     ...
     "template_data": [{
         "folder": ".",
-        "type": "terraform_v1.0.3",
+        "type": "terraform_v1.0.*",
         "variablestore": [{
           "name": "project_name",
           "value": "iac-example",
