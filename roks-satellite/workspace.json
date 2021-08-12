@@ -1,5 +1,5 @@
 {
-  "name": "sandbox-edge-telco-ws",
+  "name": "iac-example-ws",
   "type": [
     "terraform_v1.0"
   ],
