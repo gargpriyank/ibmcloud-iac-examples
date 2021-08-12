@@ -13,6 +13,6 @@ Event Streams (Kafka).
 To provision Red Hat OpenShift Kubernetes Service Classic, IBM Cloudant database, IBM Event Streams (Kafka), Bare Metal
 Server and Virtual Server.
 
-2) [roks-satellite](https://github.com/gargpriyank/ibmcloud-iac-examples/tree/master/roks-satellite)
+3 [roks-satellite](https://github.com/gargpriyank/ibmcloud-iac-examples/tree/master/roks-satellite)
 
 To provision Red Hat OpenShift Kubernetes Service on IBM Cloud Satellite deployed on IBM Cloud Virtual Servers inside IBM Virtual Private Cloud.
