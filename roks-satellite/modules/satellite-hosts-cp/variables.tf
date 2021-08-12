@@ -10,11 +10,6 @@ variable "location_zones" {
 variable "host_labels" {
   type    = list(string)
   default = null
-
-  validation {
-    condition     = can([for s in var.host_labels : regex("^[a-zA-Z0-9:]+$", s)])
-    error_message = "Label must be of the form `key:value`."
-  }
 }
 
 variable "host_vms" {
