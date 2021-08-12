@@ -10,7 +10,7 @@
     "env:dev"
   ],
   "template_repo": {
-    "url": "https://github.com/gargpriyank/ibmcloud-examples/tree/master/roks-classic"
+    "url": "https://github.com/gargpriyank/ibmcloud-examples/tree/master/iac-example-2"
   },
   "template_data": [
     {

@@ -1,8 +1,7 @@
-# Infrastructure as Code ROKS Classic
+# Infrastructure as Code ROKS Satellite
 
-This directory contains the terraform code to provision Red Hat OpenShift Kubernetes Service Classic, IBM Cloudant database, IBM Event Streams (Kafka), Bare Metal
-Server and Virtual Server. This code provides the flexibility to keep IBM Cloudant database (enable_db_service) 
-and IBM Event Streams (enable_event_streams_service) optional and can be set as false to not to provision it.
+This directory contains the terraform and schematics code to provision Red Hat OpenShift Kubernetes Service on IBM Cloud Satellite deployed on IBM 
+Cloud Virtual Servers inside IBM Virtual Private Cloud.
 
 ## Navigation
 
@@ -20,39 +19,32 @@ The requirements are documented in the
 
 - Have an IBM Cloud account with required privileges
 - [Install IBM Cloud CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#install-ibm-cloud-cli)
-- [Install the IBM Cloud CLI Plugins](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#ibm-cloud-cli-plugins)
-  `infrastructure-service`, `schematics` and `container-registry`.
+- [Install the IBM Cloud CLI Plugin](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#ibm-cloud-cli-plugins)
+  `schematics`.
 - [Log in to IBM Cloud with the CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#login-to-ibm-cloud)
 - [Install Terraform](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#install-terraform)
-- [Configure access to IBM Cloud](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#configure-access-to-ibm-cloud) for
-  Terraform and the IBM Cloud CLI
-- [Install IBM Cloud Terraform Provider](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#configure-access-to-ibm-cloud)
-- Install the following tools:
-  - [IBM Cloud Pak CLI (cloudctl) and OpenShift client CLI (oc)](https://www.ibm.com/support/knowledgecenter/SSFKVV_4.2/cli/cloudctl_oc_cli.html)
-  - [docker](https://www.ibm.com/links?url=https%3A%2F%2Fdocs.docker.com%2Fget-docker%2F)
+- [Install IBM Cloud Terraform Provider](https://github.com/IBM-Cloud/terraform-provider-ibm)
 
-> The IBM Cloud Terraform provider must be version 1.8.0 or later. This example is using Terraform version 0.12.0.
+> The IBM Cloud Terraform provider must be version 0.13.0 or later. This example is using Terraform version 0.13.0.
 
 ## Initialize
 
-1. Create `workspace` directory in your local linux/mac box. Download **roks-classic** project code.
+1. Create `workspace` directory in your local linux/mac box. Download **roks-satellite** project code.
 
     ```markdown
     mkdir <your_home_dir>/workspace
     cd <your_home_dir>/workspace
     git clone https://github.com/gargpriyank/ibmcloud-iac-examples.git
-    cd ibmcloud-iac-examples/roks-classic
+    cd ibmcloud-iac-examples/roks-satellite
     ```
 
 2. Execute the commands in below to validate the ibm cloud, terraform and schematics CLI version.
 
     ```markdown
     ibmcloud --version
-    ibmcloud plugin show infrastructure-service | head -3
     ibmcloud plugin show schematics | head -3
     ibmcloud target
     terraform version
-    ls ~/.terraform.d/plugins/terraform-provider-ibm_*
     echo $IC_API_KEY
     ```
 
@@ -76,26 +68,19 @@ The requirements are documented in the
     project_name                   = "iac-example"
     environment                    = "dev"
     resource_group                 = "iac-example-dev-rg"
-    region                         = "eu-de"
+    region                         = "us-east"
     ...
     ```
 
-2. Set the api key variables **iaas_classic_username** and **iaas_classic_api_key**. Use below command to get the value of VLAN variables
-   **public_vlan_id**, **private_vlan_id**, **additional_zone_public_service_endpoint** and **additional_zone_private_service_endpoint**.
+2. Execute below Terraform commands to provision the infrastructure.
 
     ```markdown
-    ibmcloud sl vlan list -d <zone_name>
-    ```
-
-3. Execute below Terraform commands to provision the infrastructure.
-
-    ```markdown
-    terraform init  # Initialize the terraform working directory.
+    terraform init  # Initialize the terraform working directory and modules.
     terraform plan  # Create the terraform execution plan.
     terraform apply  # Apply the terraform plan to reach to the desired state.
     ```
 
-4. Optional: In case you want to clean up the infrastructure, execute below Terraform command.
+3. Optional: In case you want to clean up the infrastructure, execute below Terraform command.
 
     ```markdown
     terraform destroy  # Destroy the infrastructure produced by terraform.
@@ -105,17 +90,16 @@ The requirements are documented in the
 
 Schematics delivers the Terraform as a Service. Below are the steps to create and run schematics workspace to provision cloud resources.
 
-1. A sample `workspace-workshop.json` file is provided with this example. This file creates resources in Dallas region in single zone. A multi-zone
-   sample file is available in **multizone** directory.
+1. A sample `workspace.json` file is provided with this example.
 
-   > Note: Please replace the values of the variables as per your project requirement. It is recommended not to commit `workspace-workshop.json` file
+   > Note: Please replace the values of the variables as per your project requirement. It is recommended not to commit `workspace.json` file
    > since it may contain sensitive information like password.**
 
     ```markdown
     ...
     "template_data": [{
         "folder": ".",
-        "type": "terraform_v0.12",
+        "type": "terraform_v1.0.3",
         "variablestore": [{
           "name": "project_name",
           "value": "iac-example",
@@ -128,30 +112,23 @@ Schematics delivers the Terraform as a Service. Below are the steps to create an
           },
           {
             "name": "resource_group",
-            "value": "iac-example-rg",
+            "value": "iac-example-dev-rg",
             "type": "string"
           },
           {
             "name": "region",
-            "value": "eu-de",
+            "value": "us-east",
             "type": "string"
           },
     ...
-    ```      
-
-2. Set the api key variables **iaas_classic_username** and **iaas_classic_api_key**. Use below command to get the value of VLAN variables
-   **public_vlan_id**, **private_vlan_id**, **additional_zone_public_service_endpoint** and **additional_zone_private_service_endpoint**.
-
-    ```markdown
-    ibmcloud sl vlan list -d <zone_name>
     ```
-
-3. Execute the below Schematics commands to create the plan and execute it. Set the api key variable `ibmcloud_api_key` before creating the plan.
+   
+2. Execute the below Schematics commands to create the plan and execute it. Set the api key variable `ibmcloud_api_key` before creating the plan.
 
     ```markdown
     # Create workspace:
     ibmcloud schematics workspace list
-    ibmcloud schematics workspace new --file workspace-workshop.json  # Create the new workspace.
+    ibmcloud schematics workspace new --file workspace.json  # Create the new workspace.
     ibmcloud schematics workspace list  # List all the workspaces.
     
     # Create plan: 
@@ -163,7 +140,7 @@ Schematics delivers the Terraform as a Service. Below are the steps to create an
     ibmcloud schematics logs  --id $WORKSPACE_ID --act-id Activity_ID
     ```
 
-4. Optional: Execute below Schematics command to destroy the infrastructure.
+3. Optional: Execute below Schematics command to destroy the infrastructure.
 
     ```markdown
     ibmcloud schematics destroy --id $WORKSPACE_ID  # Destroy the cloud resources associated to the workspace.

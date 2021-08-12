@@ -1,0 +1,113 @@
+{
+  "name": "iac-example",
+  "type": [
+    "terraform_v1.0.3"
+  ],
+  "description": "Sample workspace for POC environment",
+  "tags": [
+    "app:iac-example",
+    "owner:iac-example",
+    "env:poc"
+  ],
+  "template_repo": {
+    "url": "https://github.com/gargpriyank/ibmcloud-examples/tree/master/roks-satellite"
+  },
+  "template_data": [
+    {
+      "folder": ".",
+      "type": "terraform_v1.0.3",
+      "variablestore": [
+        {
+          "name": "project_name",
+          "value": "iac-example",
+          "type": "string"
+        },
+        {
+          "name": "environment",
+          "value": "dev",
+          "type": "string"
+        },
+        {
+          "name": "resource_group",
+          "value": "iac-example-dev-rg",
+          "type": "string"
+        },
+        {
+          "name": "ibm_region",
+          "value": "us-east",
+          "type": "string"
+        },
+        {
+          "name": "is_location_exist",
+          "value": "false",
+          "type": "bool"
+        },
+        {
+          "name": "location",
+          "value": "iac-example-dev-sat",
+          "type": "string"
+        },
+        {
+          "name": "cluster_name",
+          "value": "iac-example-dev-cluster",
+          "type": "string"
+        },
+        {
+          "name": "cluster_zones",
+          "value": "[\"us-east-1\", \"us-east-2\", \"us-east-3\"]",
+          "type": "list(string)"
+        },
+        {
+          "name": "managed_from",
+          "value": "wdc",
+          "type": "string"
+        },
+        {
+          "name": "location_zones",
+          "value": "[\"us-east-1\", \"us-east-2\", \"us-east-3\"]",
+          "type": "list(string)"
+        },
+        {
+          "name": "host_labels",
+          "value": "env:dev",
+          "type": "string"
+        },
+        {
+          "name": "host_profile",
+          "value": "bx2-4x16",
+          "type": "string"
+        },
+        {
+          "name": "cluster_host_profile",
+          "value": "bx2-8x32",
+          "type": "string"
+        },
+        {
+          "name": "host_count",
+          "value": "3",
+          "type": "number"
+        },
+        {
+          "name": "cluster_host_count",
+          "value": "1",
+          "type": "number"
+        },
+        {
+          "name": "cluster_enable_config_admin",
+          "value": "true",
+          "type": "bool"
+        },
+        {
+          "name": "ocp_version",
+          "value": "4.7_openshift",
+          "type": "string"
+        },
+        {
+          "name": "host_provider",
+          "value": "ibm",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
-# Infrastructure as Code example 1
+# Infrastructure as Code ROKS VPC
 
-This directory contains the terraform code to provision IBM cloud VPC infrastructure Gen 2, Red Hat OpenShift cluster in VPC, Public Gateway, VPN
+This directory contains the terraform code to provision IBM cloud VPC infrastructure Gen 2, Red Hat OpenShift Kubernetes Service cluster in VPC, Public Gateway, VPN
 Gateway to connect to other VPC network or on-premise network, IBM Databases for MongoDB (configurable to any other IBM database service) and IBM
 Event Streams (Kafka).
 
@@ -76,7 +76,7 @@ The requirements are documented in the
 1. A sample `terraform.tfvars` file is provided with this example. This file creates resources in Dallas region in single zone. A multi-zone
    sample file is available in **multizone** directory.
 
-   > Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `terraform.tfvars` file
+   > Note: Please replace the values of the variables as per your project requirement. It is recommended not to commit `terraform.tfvars` file
    > since it may contain sensitive information like password.**
 
     ```markdown
@@ -118,7 +118,7 @@ Schematics delivers the Terraform as a Service. Below are the steps to create an
 1. A sample `workspace-workshop.json` file is provided with this example. This file creates resources in Dallas region in single zone. A multi-zone
    sample file is available in **multizone** directory.
 
-   > Note: Please replace the values of the variables as per your project requirement. It is advisable to not to commit `workspace-workshop.json` file
+   > Note: Please replace the values of the variables as per your project requirement. It is recommended not to commit `workspace-workshop.json` file
    > since it may contain sensitive information like password.**
 
     ```markdown
