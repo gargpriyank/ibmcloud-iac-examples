@@ -1,5 +1,6 @@
 resource "ibm_is_vpc" "satellite_vpc" {
   name                     = "${var.project_name}-${var.environment}-vpc"
+  resource_group           = data.ibm_resource_group.group.id
 }
 
 resource "ibm_is_subnet" "satellite_subnet" {
@@ -9,11 +10,13 @@ resource "ibm_is_subnet" "satellite_subnet" {
   vpc        = ibm_is_vpc.satellite_vpc.id
   total_ipv4_address_count = 256
   zone                     = "${var.ibm_region}-${count.index + 1}"
+  resource_group           = data.ibm_resource_group.group.id
 }
 
 resource ibm_is_security_group "sg" {
   name                     = "${var.project_name}-${var.environment}-sg"
   vpc                      = ibm_is_vpc.satellite_vpc.id
+  resource_group           = data.ibm_resource_group.group.id
 }
 
 resource "tls_private_key" "key" {
@@ -26,6 +29,7 @@ resource "ibm_is_ssh_key" "satellite_ssh" {
 
   name                     = "${var.project_name}-${var.environment}-ssh"
   public_key               = var.public_key != null ? var.public_key : tls_private_key.key.public_key_openssh
+  resource_group           = data.ibm_resource_group.group.id
 }
 
 locals {

@@ -1,7 +1,7 @@
 {
-  "name": "iac-example",
+  "name": "sandbox-edge-telco-ws",
   "type": [
-    "terraform_v1.0.3"
+    "terraform_v1.0.*"
   ],
   "description": "Sample workspace for POC environment",
   "tags": [
