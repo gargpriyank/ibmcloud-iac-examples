@@ -1,5 +1,5 @@
 {
-  "name": "iac-example-ws",
+  "name": "sandbox-edge-telco-roks-satellite-ws",
   "type": [
     "terraform_v1.0"
   ],
@@ -69,7 +69,7 @@
         },
         {
           "name": "host_labels",
-          "value": "env:dev",
+          "value": "[\"env:dev\"]",
           "type": "string"
         },
         {
