@@ -9,7 +9,7 @@ variable "location_zones" {
 
 variable "host_labels" {
   type    = list(string)
-  default = null
+  default = ["env:dev"]
 }
 
 variable "host_vms" {

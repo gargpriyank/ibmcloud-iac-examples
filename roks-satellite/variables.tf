@@ -50,12 +50,7 @@ variable "is_location_exist" {
 
 variable "host_labels" {
   type    = list(string)
-  default = ["env:poc"]
-
-  validation {
-    condition     = can([for s in var.host_labels : regex("^[a-zA-Z0-9:]+$", s)])
-    error_message = "Label must be of the form `key:value`."
-  }
+  default = ["env:dev"]
 }
 
 variable "host_profile" {
