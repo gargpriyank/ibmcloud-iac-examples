@@ -58,6 +58,31 @@
           "type": "list(string)"
         },
         {
+          "name": "enable_custom_address_prefix",
+          "value": "true",
+          "type": "bool"
+        },
+        {
+          "name": "address_prefix_cidr",
+          "value": "[\"172.25.40.0/24\"]",
+          "type": "list(string)"
+        },
+        {
+          "name": "enable_custom_subnet",
+          "value": "true",
+          "type": "bool"
+        },
+        {
+          "name": "subnet_cidr",
+          "value": "[\"172.25.40.0/26\"]",
+          "type": "list(string)"
+        },
+        {
+          "name": "enable_public_gateway",
+          "value": "true",
+          "type": "bool"
+        },
+        {
           "name": "managed_from",
           "value": "wdc",
           "type": "string"

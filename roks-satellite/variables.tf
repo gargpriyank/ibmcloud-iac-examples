@@ -28,6 +28,26 @@ variable "cluster_zones" {
   default = ["us-east-1", "us-east-2", "us-east-3"]
 }
 
+variable "enable_custom_subnet" {
+  type    = bool
+}
+
+variable "enable_custom_address_prefix" {
+  type    = bool
+}
+
+variable "subnet_cidr" {
+  type    = list(string)
+}
+
+variable "address_prefix_cidr" {
+  type    = list(string)
+}
+
+variable "enable_public_gateway" {
+  type    = bool
+}
+
 variable "managed_from" {
   type    = string
   default = "wdc"
@@ -96,4 +116,8 @@ variable "ocp_version" {
 variable "host_provider" {
   type    = string
   default = "ibm"
+}
+
+locals {
+  max_size = length(var.cluster_zones)
 }
