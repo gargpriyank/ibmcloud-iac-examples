@@ -1,7 +1,7 @@
 {
   "name": "iac-example",
   "type": [
-    "terraform_v0.12"
+    "terraform_v1.0"
   ],
   "description": "Sample workspace for dev environment",
   "tags": [
@@ -15,7 +15,7 @@
   "template_data": [
     {
       "folder": ".",
-      "type": "terraform_v0.12",
+      "type": "terraform_v1.0",
       "variablestore": [
         {
           "name": "project_name",
@@ -79,7 +79,7 @@
         },
         {
           "name": "k8s_version",
-          "value": "4.4_openshift",
+          "value": "4.7_openshift",
           "type": "string"
         },
         {

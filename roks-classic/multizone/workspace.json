@@ -1,7 +1,7 @@
 {
   "name": "iac-example",
   "type": [
-    "terraform_v0.12"
+    "terraform_v1.0"
   ],
   "description": "Sample workspace for dev environment",
   "tags": [
@@ -10,12 +10,12 @@
     "env:dev"
   ],
   "template_repo": {
-    "url": "https://github.com/gargpriyank/ibmcloud-iac-examples/tree/master/roks-classic"
+    "url": "https://github.com/gargpriyank/ibmcloud-iac-examples/tree/master/iac-example-2"
   },
   "template_data": [
     {
       "folder": ".",
-      "type": "terraform_v0.12",
+      "type": "terraform_v1.0",
       "variablestore": [
         {
           "name": "project_name",
@@ -44,12 +44,12 @@
         },
         {
           "name": "machine_type",
-          "value": "b3c.8x32",
+          "value": "m3c.4x32",
           "type": "string"
         },
         {
           "name": "additional_zone_names",
-          "value": "[]",
+          "value": "[\"dal12\", \"dal13\"]",
           "type": "list(string)"
         },
         {
@@ -59,7 +59,7 @@
         },
         {
           "name": "workers_count",
-          "value": "3",
+          "value": "1",
           "type": "number"
         },
         {
@@ -84,22 +84,22 @@
         },
         {
           "name": "additional_zone_public_service_endpoint",
-          "value": "[]",
+          "value": "[\"34567\", \"456767\"]",
           "type": "list(string)"
         },
         {
           "name": "additional_zone_private_service_endpoint",
-          "value": "[]",
+          "value": "[\"567888\", \"677888\"]",
           "type": "list(string)"
         },
         {
           "name": "k8s_version",
-          "value": "4.4_openshift",
+          "value": "4.7_openshift",
           "type": "string"
         },
         {
           "name": "enable_db_service",
-          "value": "true",
+          "value": "false",
           "type": "bool"
         },
         {
@@ -194,7 +194,7 @@
         },
         {
           "name": "bm_datacenter",
-          "value": "[\"dal10\"]",
+          "value": "[\"dal10\", \"dal12\"]",
           "type": "list(string)"
         },
         {
@@ -239,7 +239,7 @@
         },
         {
           "name": "vs_datacenter",
-          "value": "[\"dal10\"]",
+          "value": "[\"dal10\", \"dal12\"]",
           "type": "list(string)"
         }
       ]
