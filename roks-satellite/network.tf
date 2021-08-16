@@ -58,3 +58,7 @@ resource "ibm_is_ssh_key" "satellite_ssh" {
   public_key     = var.public_key != null ? var.public_key : tls_private_key.key.public_key_openssh
   resource_group = data.ibm_resource_group.group.id
 }
+
+locals {
+  subnet_ids = [ibm_is_subnet.satellite_subnet[0].id, ibm_is_subnet.satellite_subnet[1].id, ibm_is_subnet.satellite_subnet[2].id]
+}

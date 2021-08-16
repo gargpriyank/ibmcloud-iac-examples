@@ -16,7 +16,6 @@ resource "ibm_satellite_cluster" "create_cluster" {
 
 resource "ibm_satellite_host" "assign_host" {
   count         = var.cluster_host_count
-
   depends_on    = [ibm_satellite_cluster.create_cluster]
   location      = var.location
   cluster       = ibm_satellite_cluster.create_cluster.id

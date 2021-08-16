@@ -1,5 +1,5 @@
 {
-  "name": "sandbox-edge-telco-ws",
+  "name": "iac-example",
   "type": [
     "terraform_v1.0"
   ],
@@ -64,7 +64,7 @@
         },
         {
           "name": "address_prefix_cidr",
-          "value": "[\"172.25.40.0/24\"]",
+          "value": "[\"172.25.40.0/24\", \"172.25.41.0/24\", \"172.25.42.0/24\"]",
           "type": "list(string)"
         },
         {
@@ -74,7 +74,7 @@
         },
         {
           "name": "subnet_cidr",
-          "value": "[\"172.25.40.0/26\"]",
+          "value": "[\"172.25.40.0/26\", \"172.25.41.0/26\", \"172.25.42.0/26\"]",
           "type": "list(string)"
         },
         {

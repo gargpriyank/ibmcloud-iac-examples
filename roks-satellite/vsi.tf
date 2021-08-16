@@ -11,7 +11,7 @@ resource "ibm_is_instance" "satellite_cp_vsi" {
   user_data      = module.satellite-location.host_script
 
   primary_network_interface {
-    subnet       = ibm_is_subnet.satellite_subnet[count.index].id
+    subnet = element(local.subnet_ids, count.index)
   }
 }
 
@@ -34,7 +34,7 @@ resource "ibm_is_instance" "satellite_cluster_vsi" {
   user_data      = module.satellite-location.host_script
 
   primary_network_interface {
-    subnet       = ibm_is_subnet.satellite_subnet[count.index].id
+    subnet = element(local.subnet_ids, count.index)
   }
 }
 
