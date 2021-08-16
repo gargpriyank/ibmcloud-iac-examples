@@ -25,7 +25,6 @@ resource "ibm_is_subnet" "iac_iks_subnet" {
 
 resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_k8s" {
   count     = local.max_size
-  name      = "${var.project_name}-${var.environment}-sg-${count.index}"
   group     = ibm_is_vpc.iac_iks_vpc.resource_group
   direction = "inbound"
   remote    = ibm_is_subnet.iac_iks_subnet[count.index].ipv4_cidr_block

@@ -35,9 +35,8 @@ resource "ibm_is_public_gateway" "iac_iks_gateway" {
   }
 }
 
-resource ibm_is_security_group "sg" {
+resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_k8s" {
   count     = local.max_size
-  name      = "${var.project_name}-${var.environment}-sg-${count.index}"
   group     = ibm_is_vpc.satellite_vpc.resource_group
   direction = "inbound"
   remote    = ibm_is_subnet.satellite_subnet[count.index].ipv4_cidr_block
