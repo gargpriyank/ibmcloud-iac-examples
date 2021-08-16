@@ -31,7 +31,7 @@ The requirements are documented in the
   - [IBM Cloud Pak CLI (cloudctl) and OpenShift client CLI (oc)](https://www.ibm.com/support/knowledgecenter/SSFKVV_4.2/cli/cloudctl_oc_cli.html)
   - [docker](https://www.ibm.com/links?url=https%3A%2F%2Fdocs.docker.com%2Fget-docker%2F)
 
-> The IBM Cloud Terraform provider must be version 1.8.0 or later. This example is using Terraform version 0.12.0.
+> The IBM Cloud Terraform provider must be version 0.13 or later. This example is using Terraform version 1.0.
 
 ## Initialize
 
