@@ -25,7 +25,7 @@ variable "cluster_name" {
 
 variable "cluster_zones" {
   type    = list(string)
-  default = ["us-east-1"]
+  default = ["us-east-1", "us-east-2", "us-east-3"]
 }
 
 variable "enable_custom_subnet" {
