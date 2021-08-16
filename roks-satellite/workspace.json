@@ -1,5 +1,5 @@
 {
-  "name": "sandbox-edge-telco-roks-satellite-ws",
+  "name": "iac-example",
   "type": [
     "terraform_v1.0"
   ],
