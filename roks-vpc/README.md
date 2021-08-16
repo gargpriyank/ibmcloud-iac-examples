@@ -73,7 +73,7 @@ The requirements are documented in the
 
 ## Using Terraform
 
-1. A sample `terraform.tfvars` file is provided with this example. This file creates resources in Dallas region in single zone. A multi-zone
+1. A sample `terraform.tfvars` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multi-zone
    sample file is available in **multizone** directory.
 
    > Note: Please replace the values of the variables as per your project requirement. It is recommended not to commit `terraform.tfvars` file
@@ -115,7 +115,7 @@ The requirements are documented in the
 
 Schematics delivers the Terraform as a Service. Below are the steps to create and run schematics workspace to provision cloud resources.
 
-1. A sample `workspace.json` file is provided with this example. This file creates resources in Dallas region in single zone. A multi-zone
+1. A sample `workspace.json` file is provided with this example. This file creates resources in Frankfurt region in single zone. A multi-zone
    sample file is available in **multizone** directory.
 
    > Note: Please replace the values of the variables as per your project requirement. It is recommended not to commit `workspace.json` file

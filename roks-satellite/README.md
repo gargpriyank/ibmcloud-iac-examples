@@ -58,8 +58,7 @@ The requirements are documented in the
 
 ## Using Terraform
 
-1. A sample `terraform.tfvars` file is provided with this example. This file creates resources in Dallas region in single zone. A multi-zone
-   sample file is available in **multizone** directory.
+1. A sample `terraform.tfvars` file is provided with this example. This file creates resources in Washington DC region in single zone.
 
    > Note: Please replace the values of the variables as per your project requirement. It is recommended not to commit `terraform.tfvars` file
    > since it may contain sensitive information like password.**
