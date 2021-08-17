@@ -42,7 +42,7 @@ resource "ibm_is_security_group" "iac_iks_security_group_tcp_k8s" {
   resource_group = data.ibm_resource_group.group.id
 }
 
-resource "ibm_is_security_group_inbound_rule" "iac_iks_security_group_inbound_rule_tcp_k8s" {
+resource "ibm_is_security_group_rule" "iac_iks_security_group_inbound_rule_tcp_k8s" {
   count     = local.max_size
   group     = ibm_is_security_group.iac_iks_security_group_tcp_k8s.id
   direction = "inbound"
@@ -53,7 +53,7 @@ resource "ibm_is_security_group_inbound_rule" "iac_iks_security_group_inbound_ru
   }
 }
 
-resource "ibm_is_security_group_outbound_rule" "iac_iks_security_group_outbound_rule_tcp_k8s" {
+resource "ibm_is_security_group_rule" "iac_iks_security_group_outbound_rule_k8s" {
   count     = local.max_size
   group     = ibm_is_security_group.iac_iks_security_group_tcp_k8s.id
   direction = "outbound"
