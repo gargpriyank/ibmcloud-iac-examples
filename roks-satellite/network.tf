@@ -35,16 +35,21 @@ resource "ibm_is_public_gateway" "iac_iks_gateway" {
   }
 }
 
-resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_k8s" {
-  count     = local.max_size
-  group     = ibm_is_vpc.satellite_vpc.resource_group
-  direction = "inbound"
-  remote    = ibm_is_subnet.satellite_subnet[count.index].ipv4_cidr_block
+resource "ibm_security_group" "sg" {
+  count = local.max_size
+  name  = "${var.project_name}-${var.environment}-sg-${format("%02s", count.index)}"
+  description = "Allow ingress traffic"
+}
 
-  tcp {
-    port_min = 30000
-    port_max = 32767
-  }
+resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_k8s" {
+  count             = local.max_size
+  group             = ibm_is_vpc.satellite_vpc.resource_group
+  direction         = "ingress"
+  port_range_min    = 30000
+  port_range_max    = 32767
+  protocol          = "tcp"
+  security_group_id = ibm_security_group.sg.id
+  remote_ip         = ibm_is_subnet.satellite_subnet[count.index].ipv4_cidr_block
 }
 
 resource "tls_private_key" "key" {
