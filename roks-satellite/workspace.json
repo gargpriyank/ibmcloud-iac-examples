@@ -114,7 +114,7 @@
         },
         {
           "name": "cluster_host_count",
-          "value": "1",
+          "value": "2",
           "type": "number"
         },
         {
