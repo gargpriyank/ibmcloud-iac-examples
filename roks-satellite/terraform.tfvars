@@ -1,6 +1,6 @@
 project_name                 = "iac-example"
 environment                  = "dev"
-resource_group               = "iac-example-dev-rg"
+resource_group               = "sandbox-edge-telco-rg"
 ibm_region                   = "us-east"
 is_location_exist            = false
 location                     = "iac-example-dev-sat"

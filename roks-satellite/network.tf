@@ -35,7 +35,7 @@ resource "ibm_is_public_gateway" "iac_iks_gateway" {
   }
 }
 
-resource "ibm_is_security_group" "iac_iks_security_group_tcp_k8s" {
+resource "ibm_is_security_group" "iac_iks_security_group_k8s" {
   count          = local.max_size
   name           = "${var.project_name}-${var.environment}-sg-${format("%02s", count.index)}"
   vpc            = ibm_is_vpc.satellite_vpc.id
@@ -44,7 +44,7 @@ resource "ibm_is_security_group" "iac_iks_security_group_tcp_k8s" {
 
 resource "ibm_is_security_group_rule" "iac_iks_security_group_inbound_rule_tcp_k8s" {
   count     = local.max_size
-  group     = ibm_is_security_group.iac_iks_security_group_tcp_k8s.id
+  group     = ibm_is_security_group.iac_iks_security_group_k8s[count.index].id
   direction = "inbound"
   remote    = ibm_is_subnet.satellite_subnet[count.index].ipv4_cidr_block
   tcp {
@@ -55,9 +55,14 @@ resource "ibm_is_security_group_rule" "iac_iks_security_group_inbound_rule_tcp_k
 
 resource "ibm_is_security_group_rule" "iac_iks_security_group_outbound_rule_k8s" {
   count     = local.max_size
-  group     = ibm_is_security_group.iac_iks_security_group_tcp_k8s.id
+  group     = ibm_is_security_group.iac_iks_security_group_k8s[count.index].id
   direction = "outbound"
   remote    = "0.0.0.0/0"
+}
+
+resource "tls_private_key" "key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
 }
 
 resource "ibm_is_ssh_key" "satellite_ssh" {
