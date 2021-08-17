@@ -119,5 +119,5 @@ variable "host_provider" {
 }
 
 locals {
-  max_size = length(var.cluster_zones)
+  max_size = length(var.location_zones)
 }
