@@ -54,7 +54,7 @@
         },
         {
           "name": "cluster_zones",
-          "value": "[\"us-east-1\", \"us-east-2\", \"us-east-3\"]",
+          "value": "[\"us-east-1\", \"us-east-2\"]",
           "type": "list(string)"
         },
         {

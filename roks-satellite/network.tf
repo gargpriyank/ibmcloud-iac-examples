@@ -73,5 +73,5 @@ resource "ibm_is_ssh_key" "satellite_ssh" {
 }
 
 locals {
-  subnet_ids = [ibm_is_subnet.satellite_subnet[0].id, ibm_is_subnet.satellite_subnet[1].id, ibm_is_subnet.satellite_subnet[2].id]
+  subnet_ids = ibm_is_subnet.satellite_subnet[*].id
 }
