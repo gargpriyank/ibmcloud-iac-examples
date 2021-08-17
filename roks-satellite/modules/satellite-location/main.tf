@@ -1,6 +1,5 @@
 resource "ibm_satellite_location" "create_location" {
-  count = var.is_location_exist == false ? 1 : 0
-
+  count             = var.is_location_exist == false ? 1 : 0
   location          = var.location
   zones             = var.location_zones
   managed_from      = var.managed_from
