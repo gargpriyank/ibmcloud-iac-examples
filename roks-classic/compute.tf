@@ -11,8 +11,6 @@ resource "ibm_compute_bare_metal" "bare_metal" {
   public_bandwidth = var.bm_public_bandwidth
   disk_key_names   = var.bm_disk_key_names
   hourly_billing   = var.bm_hourly_billing
-  public_vlan_id   = var.bm_public_vlan_id
-  private_vlan_id  = var.bm_private_vlan_id
 }
 
 resource "ibm_compute_vm_instance" "virtual_server" {

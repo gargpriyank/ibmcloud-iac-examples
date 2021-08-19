@@ -14,13 +14,13 @@ resource "ibm_is_vpc_address_prefix" "vpc_address_prefix" {
 
 resource "ibm_is_subnet" "satellite_subnet" {
   count           = local.max_size
-  depends_on      = [ibm_is_vpc_address_prefix.vpc_address_prefix]
   name            = "${var.project_name}-${var.environment}-subnet-${format("%02s", count.index)}"
   zone            = var.location_zones[count.index]
   vpc             = ibm_is_vpc.satellite_vpc.id
   public_gateway  = var.enable_public_gateway ? ibm_is_public_gateway.iac_iks_gateway[count.index].id : ""
   ipv4_cidr_block = var.enable_custom_subnet ? var.subnet_cidr[count.index] : "10.0.${format("%01s", count.index)}.0/26"
   resource_group  = data.ibm_resource_group.group.id
+  depends_on      = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
 
 resource "ibm_is_public_gateway" "iac_iks_gateway" {
@@ -35,27 +35,49 @@ resource "ibm_is_public_gateway" "iac_iks_gateway" {
   }
 }
 
-resource "ibm_is_security_group" "iac_iks_security_group_k8s" {
+resource "ibm_is_security_group" "iac_iks_security_group" {
   count          = local.max_size
   name           = "${var.project_name}-${var.environment}-sg-${format("%02s", count.index)}"
   vpc            = ibm_is_vpc.satellite_vpc.id
   resource_group = data.ibm_resource_group.group.id
 }
 
-resource "ibm_is_security_group_rule" "iac_iks_security_group_inbound_rule_tcp_k8s" {
+resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_inbound_tcp" {
   count     = local.max_size
-  group     = ibm_is_security_group.iac_iks_security_group_k8s[count.index].id
+  group     = ibm_is_security_group.iac_iks_security_group[count.index].id
   direction = "inbound"
-  remote    = ibm_is_subnet.satellite_subnet[count.index].ipv4_cidr_block
+  remote    = "0.0.0.0/0"
   tcp {
     port_min = 30000
     port_max = 32767
   }
 }
 
-resource "ibm_is_security_group_rule" "iac_iks_security_group_outbound_rule_k8s" {
+resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_inbound_udp" {
   count     = local.max_size
-  group     = ibm_is_security_group.iac_iks_security_group_k8s[count.index].id
+  group     = ibm_is_security_group.iac_iks_security_group[count.index].id
+  direction = "inbound"
+  remote    = "0.0.0.0/0"
+  udp {
+    port_min = 30000
+    port_max = 32767
+  }
+}
+
+resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_inbound_tcp_https" {
+  count     = local.max_size
+  group     = ibm_is_security_group.iac_iks_security_group[count.index].id
+  direction = "inbound"
+  remote    = "0.0.0.0/0"
+  tcp {
+    port_min = 443
+    port_max = 443
+  }
+}
+
+resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_outbound_all" {
+  count     = local.max_size
+  group     = ibm_is_security_group.iac_iks_security_group[count.index].id
   direction = "outbound"
   remote    = "0.0.0.0/0"
 }
@@ -66,10 +88,10 @@ resource "tls_private_key" "key" {
 }
 
 resource "ibm_is_ssh_key" "satellite_ssh" {
-  depends_on     = [module.satellite-location]
   name           = "${var.project_name}-${var.environment}-ssh"
   public_key     = var.public_key != null ? var.public_key : tls_private_key.key.public_key_openssh
   resource_group = data.ibm_resource_group.group.id
+  depends_on     = [module.satellite-location]
 }
 
 locals {

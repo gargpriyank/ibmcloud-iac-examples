@@ -89,15 +89,8 @@ The requirements are documented in the
     workers_count                  = [2, 1]
     ...
     ```
-
-2. Set the api key variables **iaas_classic_username** and **iaas_classic_api_key**. Use below command to get the value of VLAN variables
-   **public_vlan_id**, **private_vlan_id**, **additional_zone_public_service_endpoint** and **additional_zone_private_service_endpoint**.
-
-    ```markdown
-    ibmcloud sl vlan list -d <zone_name>
-    ```
-
-3. Execute below Terraform commands to provision the infrastructure.
+   
+2. Execute below Terraform commands to provision the infrastructure.
 
     ```markdown
     terraform init  # Initialize the terraform working directory.
@@ -105,7 +98,7 @@ The requirements are documented in the
     terraform apply  # Apply the terraform plan to reach to the desired state.
     ```
 
-4. Optional: In case you want to clean up the infrastructure, execute below Terraform command.
+3. Optional: In case you want to clean up the infrastructure, execute below Terraform command.
 
     ```markdown
     terraform destroy  # Destroy the infrastructure produced by terraform.
@@ -159,14 +152,7 @@ Schematics delivers the Terraform as a Service. Below are the steps to create an
     ...
     ```      
 
-2. Set the api key variables **iaas_classic_username** and **iaas_classic_api_key**. Use below command to get the value of VLAN variables
-   **public_vlan_id**, **private_vlan_id**, **additional_zone_public_service_endpoint** and **additional_zone_private_service_endpoint**.
-
-    ```markdown
-    ibmcloud sl vlan list -d <zone_name>
-    ```
-
-3. Execute the below Schematics commands to create the plan and execute it. Set the api key variable `ibmcloud_api_key` before creating the plan.
+2. Execute the below Schematics commands to create the plan and execute it. Set the api key variable `ibmcloud_api_key` before creating the plan.
 
     ```markdown
     # Create workspace:
@@ -183,7 +169,7 @@ Schematics delivers the Terraform as a Service. Below are the steps to create an
     ibmcloud schematics logs  --id $WORKSPACE_ID --act-id Activity_ID
     ```
 
-4. Optional: Execute below Schematics command to destroy the infrastructure.
+3. Optional: Execute below Schematics command to destroy the infrastructure.
 
     ```markdown
     ibmcloud schematics destroy --id $WORKSPACE_ID  # Destroy the cloud resources associated to the workspace.

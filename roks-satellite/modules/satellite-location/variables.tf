@@ -18,7 +18,7 @@ variable "is_location_exist" {
 
 variable "managed_from" {
   type    = string
-  default = "wdc"
+  default = "dal"
 }
 
 variable "location_zones" {

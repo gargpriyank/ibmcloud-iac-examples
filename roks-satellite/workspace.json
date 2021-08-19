@@ -34,7 +34,7 @@
         },
         {
           "name": "ibm_region",
-          "value": "us-east",
+          "value": "us-south",
           "type": "string"
         },
         {
@@ -54,7 +54,7 @@
         },
         {
           "name": "cluster_zones",
-          "value": "[\"us-east-1\", \"us-east-2\"]",
+          "value": "[\"us-south-1\", \"us-south-2\"]",
           "type": "list(string)"
         },
         {
@@ -89,7 +89,7 @@
         },
         {
           "name": "location_zones",
-          "value": "[\"us-east-1\", \"us-east-2\", \"us-east-3\"]",
+          "value": "[\"us-south-1\", \"us-south-2\", \"us-south-3\"]",
           "type": "list(string)"
         },
         {
