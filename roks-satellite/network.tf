@@ -17,68 +17,15 @@ resource "ibm_is_subnet" "satellite_subnet" {
   name            = "${var.project_name}-${var.environment}-subnet-${format("%02s", count.index)}"
   zone            = var.location_zones[count.index]
   vpc             = ibm_is_vpc.satellite_vpc.id
-  public_gateway  = var.enable_public_gateway ? ibm_is_public_gateway.iac_iks_gateway[count.index].id : ""
   ipv4_cidr_block = var.enable_custom_subnet ? var.subnet_cidr[count.index] : "10.0.${format("%01s", count.index)}.0/26"
   resource_group  = data.ibm_resource_group.group.id
   depends_on      = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
 
-resource "ibm_is_public_gateway" "iac_iks_gateway" {
-  count          = var.enable_public_gateway ? local.max_size : 0
-  name           = "${var.project_name}-${var.environment}-gateway-${format("%02s", count.index)}"
-  vpc            = ibm_is_vpc.satellite_vpc.id
-  zone           = var.location_zones[count.index]
-  resource_group = data.ibm_resource_group.group.id
-
-  timeouts {
-    create = "90m"
-  }
-}
-
-resource "ibm_is_security_group" "iac_iks_security_group" {
-  count          = local.max_size
-  name           = "${var.project_name}-${var.environment}-sg-${format("%02s", count.index)}"
-  vpc            = ibm_is_vpc.satellite_vpc.id
-  resource_group = data.ibm_resource_group.group.id
-}
-
-resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_inbound_tcp" {
+resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_ocp" {
   count     = local.max_size
-  group     = ibm_is_security_group.iac_iks_security_group[count.index].id
+  group     = ibm_is_vpc.satellite_vpc.default_security_group
   direction = "inbound"
-  remote    = "0.0.0.0/0"
-  tcp {
-    port_min = 30000
-    port_max = 32767
-  }
-}
-
-resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_inbound_udp" {
-  count     = local.max_size
-  group     = ibm_is_security_group.iac_iks_security_group[count.index].id
-  direction = "inbound"
-  remote    = "0.0.0.0/0"
-  udp {
-    port_min = 30000
-    port_max = 32767
-  }
-}
-
-resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_inbound_tcp_https" {
-  count     = local.max_size
-  group     = ibm_is_security_group.iac_iks_security_group[count.index].id
-  direction = "inbound"
-  remote    = "0.0.0.0/0"
-  tcp {
-    port_min = 443
-    port_max = 443
-  }
-}
-
-resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_outbound_all" {
-  count     = local.max_size
-  group     = ibm_is_security_group.iac_iks_security_group[count.index].id
-  direction = "outbound"
   remote    = "0.0.0.0/0"
 }
 

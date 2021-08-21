@@ -23,15 +23,27 @@ resource "ibm_is_subnet" "iac_iks_subnet" {
   depends_on      = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
 
-resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_k8s" {
+resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_ocp" {
   count     = local.max_size
-  group     = ibm_is_vpc.iac_iks_vpc.resource_group
+  group     = ibm_is_vpc.iac_iks_vpc.default_security_group
   direction = "inbound"
   remote    = ibm_is_subnet.iac_iks_subnet[count.index].ipv4_cidr_block
 
   tcp {
     port_min = 30000
     port_max = 32767
+  }
+}
+
+resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_https" {
+  count     = local.max_size
+  group     = ibm_is_vpc.iac_iks_vpc.default_security_group
+  direction = "inbound"
+  remote    = ibm_is_subnet.iac_iks_subnet[count.index].ipv4_cidr_block
+
+  tcp {
+    port_min = 443
+    port_max = 443
   }
 }
 

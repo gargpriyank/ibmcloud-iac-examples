@@ -44,10 +44,6 @@ variable "address_prefix_cidr" {
   type    = list(string)
 }
 
-variable "enable_public_gateway" {
-  type    = bool
-}
-
 variable "managed_from" {
   type    = string
   default = "dal"

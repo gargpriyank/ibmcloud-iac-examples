@@ -78,11 +78,6 @@
           "type": "list(string)"
         },
         {
-          "name": "enable_public_gateway",
-          "value": "true",
-          "type": "bool"
-        },
-        {
           "name": "managed_from",
           "value": "wdc",
           "type": "string"
