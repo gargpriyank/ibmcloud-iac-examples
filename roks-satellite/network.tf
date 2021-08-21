@@ -26,7 +26,24 @@ resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_ocp" {
   count     = local.max_size
   group     = ibm_is_vpc.satellite_vpc.default_security_group
   direction = "inbound"
-  remote    = "0.0.0.0/0"
+  remote    = ibm_is_subnet.satellite_subnet[count.index].ipv4_cidr_block
+
+  tcp {
+    port_min = 30000
+    port_max = 32767
+  }
+}
+
+resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_https" {
+  count     = local.max_size
+  group     = ibm_is_vpc.satellite_vpc.default_security_group
+  direction = "inbound"
+  remote    = ibm_is_subnet.satellite_subnet[count.index].ipv4_cidr_block
+
+  tcp {
+    port_min = 443
+    port_max = 443
+  }
 }
 
 resource "tls_private_key" "key" {
