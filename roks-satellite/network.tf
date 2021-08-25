@@ -22,8 +22,15 @@ resource "ibm_is_subnet" "satellite_subnet" {
   depends_on      = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
 
+resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_all" {
+  count     = var.cluster_enable_public_access ? 0 : 1
+  group     = ibm_is_vpc.satellite_vpc.default_security_group
+  direction = "inbound"
+  remote    = "0.0.0.0/0"
+}
+
 resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_ocp" {
-  count     = local.max_size
+  count     = var.cluster_enable_public_access ? 0 : local.max_size
   group     = ibm_is_vpc.satellite_vpc.default_security_group
   direction = "inbound"
   remote    = ibm_is_subnet.satellite_subnet[count.index].ipv4_cidr_block
@@ -35,7 +42,7 @@ resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_ocp" {
 }
 
 resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_https" {
-  count     = local.max_size
+  count     = var.cluster_enable_public_access ? 0 : local.max_size
   group     = ibm_is_vpc.satellite_vpc.default_security_group
   direction = "inbound"
   remote    = ibm_is_subnet.satellite_subnet[count.index].ipv4_cidr_block

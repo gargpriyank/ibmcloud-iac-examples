@@ -109,6 +109,11 @@ variable "ocp_version" {
   default = "4.7_openshift"
 }
 
+variable "cluster_enable_public_access" {
+  type    = bool
+  default = true
+}
+
 variable "host_provider" {
   type    = string
   default = "ibm"

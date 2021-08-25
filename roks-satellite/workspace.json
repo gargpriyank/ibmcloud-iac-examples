@@ -123,6 +123,11 @@
           "type": "string"
         },
         {
+          "name": "cluster_enable_public_access",
+          "value": "true",
+          "type": "bool"
+        },
+        {
           "name": "host_provider",
           "value": "ibm",
           "type": "string"

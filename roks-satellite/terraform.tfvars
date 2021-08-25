@@ -19,4 +19,5 @@ host_count                   = 3
 cluster_host_count           = 2
 cluster_enable_config_admin  = false
 ocp_version                  = "4.7_openshift"
+cluster_enable_public_access = true
 host_provider                = "ibm"
