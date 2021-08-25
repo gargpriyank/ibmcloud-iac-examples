@@ -88,7 +88,7 @@ The requirements are documented in the
    to access cluster from the public network.
 
 5. Follow the [documentation](https://cloud.ibm.com/docs/satellite?topic=openshift-satellite-clusters#satcluster-internal-registry) to set up
-   internal container registry.
+   the internal container registry.
 
 ## Using Schematics
 
@@ -157,4 +157,4 @@ Schematics delivers the Terraform as a Service. Below are the steps to create an
    to access cluster from the public network.
 
 5. Follow the [documentation](https://cloud.ibm.com/docs/satellite?topic=openshift-satellite-clusters#satcluster-internal-registry) to set up 
-   internal container registry.
+   the internal container registry.
