@@ -23,7 +23,7 @@ resource "ibm_is_subnet" "satellite_subnet" {
 }
 
 resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_all" {
-  count     = var.cluster_enable_public_access ? 0 : 1
+  count     = var.cluster_enable_public_access ? 1 : 0
   group     = ibm_is_vpc.satellite_vpc.default_security_group
   direction = "inbound"
   remote    = "0.0.0.0/0"
