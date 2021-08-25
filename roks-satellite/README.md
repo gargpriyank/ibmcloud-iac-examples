@@ -10,7 +10,6 @@ Cloud Virtual Servers inside IBM Virtual Private Cloud.
 - [Using Terraform](#using-terraform)
   <br> or,
 - (Recommended) [Using Schematics](#using-schematics)
-- [Validation](#validation)
 
 ## Prerequisites
 
@@ -58,7 +57,8 @@ The requirements are documented in the
 
 ## Using Terraform
 
-1. A sample `terraform.tfvars` file is provided with this example. This file creates resources in Washington DC region in single zone.
+1. A sample `terraform.tfvars` file is provided with this example. This file creates resources in Washington DC region in single zone. To access 
+   the OpenShift cluster from the public network, make sure you set `cluster_enable_public_access` value to `true`.
 
    > Note: Please replace the values of the variables as per your project requirement. It is recommended not to commit `terraform.tfvars` file
    > since it may contain sensitive information like password.**
@@ -84,6 +84,8 @@ The requirements are documented in the
     ```markdown
     terraform destroy  # Destroy the infrastructure produced by terraform.
     ```
+4. After OpenShift cluster is provisioned, follow the [documentation](https://cloud.ibm.com/docs/openshift?topic=openshift-access_cluster#sat_public_access) 
+   to access cluster from the public network.
 
 ## Using Schematics
 
@@ -148,31 +150,5 @@ Schematics delivers the Terraform as a Service. Below are the steps to create an
     ibmcloud schematics workspace delete --id $WORKSPACE_ID  # Delete the schematics workspace.
     ibmcloud schematics workspace list
     ```
-
-## Validation
-
-After the infrastructure is provisioned, validate it using one of the Terraform or Schematics commands.
-
-1. Execute the below commands to get the Terraform output and cluster info.
-
-    ```markdown
-    terraform output
-    ibmcloud ks cluster config --cluster $(terraform output cluster_id)
-    ```
-
-2. Execute the below commands to get the Schematics output and cluster info.
-
-    ```markdown
-    ibmcloud schematics workspace list          # Identify the WORKSPACE_ID
-    ibmcloud schematics workspace output --id $WORKSPACE_ID --json
-    
-    ibmcloud ks cluster config --cluster $(ibmcloud schematics output --id $WORKSPACE_ID --json | jq -r '.[].output_values[].cluster_id.value')
-    ```
-
-3. Use below `oc` commands to verify the cluster, node and pods info.
-
-    ```markdown
-    oc cluster-info
-    oc get nodes
-    oc get pods -A
-    ```
+4. After OpenShift cluster is provisioned, follow the [documentation](https://cloud.ibm.com/docs/openshift?topic=openshift-access_cluster#sat_public_access)
+   to access cluster from the public network.
