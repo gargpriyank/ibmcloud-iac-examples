@@ -87,6 +87,9 @@ The requirements are documented in the
 4. After OpenShift cluster is provisioned, follow the [documentation](https://cloud.ibm.com/docs/openshift?topic=openshift-access_cluster#sat_public_access) 
    to access cluster from the public network.
 
+5. Follow the [documentation](https://cloud.ibm.com/docs/satellite?topic=openshift-satellite-clusters#satcluster-internal-registry) to set up
+   internal container registry.
+
 ## Using Schematics
 
 Schematics delivers the Terraform as a Service. Below are the steps to create and run schematics workspace to provision cloud resources.
@@ -152,3 +155,6 @@ Schematics delivers the Terraform as a Service. Below are the steps to create an
     ```
 4. After OpenShift cluster is provisioned, follow the [documentation](https://cloud.ibm.com/docs/openshift?topic=openshift-access_cluster#sat_public_access)
    to access cluster from the public network.
+
+5. Follow the [documentation](https://cloud.ibm.com/docs/satellite?topic=openshift-satellite-clusters#satcluster-internal-registry) to set up 
+   internal container registry.
