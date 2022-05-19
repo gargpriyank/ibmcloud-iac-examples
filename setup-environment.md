@@ -63,8 +63,9 @@ ibmcloud version 1.0.0+908f90a-2020-03-30T10:19:41+00:00
 The next steps is to install all the required plugins, for Infrastructure as Code you'll need the `vpc-infrastructure` (aka `infrastructure-service`) and the `schematics` plugins, to install them execute the following command:
 
 ```markdown
-ibmcloud plugin install -f -r "IBM Cloud" infrastructure-service
-ibmcloud plugin install -f -r "IBM Cloud" schematics
+ibmcloud plugin install infrastructure-service
+ibmcloud plugin install schematics
+ibmcloud plugin install container-service
 ```
 
 To list all the available plugins use the command:
