@@ -16,17 +16,17 @@ and IBM Event Streams (enable_event_streams_service) optional and can be set as 
 ## Prerequisites
 
 The requirements are documented in the
-[Environment Setup](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md). It includes:
+[Environment Setup](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md). It includes:
 
 - Have an IBM Cloud account with required privileges
-- [Install IBM Cloud CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#install-ibm-cloud-cli)
-- [Install the IBM Cloud CLI Plugins](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#ibm-cloud-cli-plugins)
+- [Install IBM Cloud CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md#install-ibm-cloud-cli)
+- [Install the IBM Cloud CLI Plugins](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md#ibm-cloud-cli-plugins)
   `infrastructure-service`, `schematics` and `container-registry`.
-- [Log in to IBM Cloud with the CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#login-to-ibm-cloud)
-- [Install Terraform](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#install-terraform)
-- [Configure access to IBM Cloud](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#configure-access-to-ibm-cloud) for
+- [Log in to IBM Cloud with the CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md#login-to-ibm-cloud)
+- [Install Terraform](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md#install-terraform)
+- [Configure access to IBM Cloud](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md#configure-access-to-ibm-cloud) for
   Terraform and the IBM Cloud CLI
-- [Install IBM Cloud Terraform Provider](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#configure-access-to-ibm-cloud)
+- [Install IBM Cloud Terraform Provider](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md#configure-access-to-ibm-cloud)
 - Install the following tools:
   - [IBM Cloud Pak CLI (cloudctl) and OpenShift client CLI (oc)](https://www.ibm.com/support/knowledgecenter/SSFKVV_4.2/cli/cloudctl_oc_cli.html)
   - [docker](https://www.ibm.com/links?url=https%3A%2F%2Fdocs.docker.com%2Fget-docker%2F)
