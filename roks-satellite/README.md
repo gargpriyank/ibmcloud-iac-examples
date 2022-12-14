@@ -14,14 +14,14 @@ Cloud Virtual Servers inside IBM Virtual Private Cloud.
 ## Prerequisites
 
 The requirements are documented in the
-[Environment Setup](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md). It includes:
+[Environment Setup](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md). It includes:
 
 - Have an IBM Cloud account with required privileges
-- [Install IBM Cloud CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#install-ibm-cloud-cli)
-- [Install the IBM Cloud CLI Plugin](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#ibm-cloud-cli-plugins)
+- [Install IBM Cloud CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md#install-ibm-cloud-cli)
+- [Install the IBM Cloud CLI Plugin](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md#ibm-cloud-cli-plugins)
   `schematics`.
-- [Log in to IBM Cloud with the CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#login-to-ibm-cloud)
-- [Install Terraform](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/master/setup-environment.md#install-terraform)
+- [Log in to IBM Cloud with the CLI](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md#login-to-ibm-cloud)
+- [Install Terraform](https://github.com/gargpriyank/ibmcloud-iac-examples/blob/main/setup-environment.md#install-terraform)
 - [Install IBM Cloud Terraform Provider](https://github.com/IBM-Cloud/terraform-provider-ibm)
 
 > The IBM Cloud Terraform provider must be version 0.13.0 or later. This example is using Terraform version 0.13.0.
